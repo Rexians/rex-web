@@ -1,3 +1,4 @@
+import re
 from flask import *
 import qrcode
 from pytube import YouTube
@@ -44,6 +45,23 @@ def download():
 def speedtesting():
     st = speed()
     return (f"Download Speed-{st.downloads()}Bit/s\nUpload Speed-{st.uploads()}Bit/s\nPings-{st.pings()}\nHost Info-{st.host_infos()}\nIP-{st.ips()}")
+
+@app.route("/redirect/discord")
+def redirect_discord():
+    return render_template("discord_redirect.html", template_folder="templates")
+
+@app.route("/soon")
+def soon():
+    return render_template("soon.html", template_folder="templates")
+
+@app.route("/404")
+def invalid_route_404():
+    return render_template("404.html", template_folder="templates")
+
+@app.errorhandler(404) 
+def invalid_route(e): 
+    return render_template("404.html",templates_folder="templates")
+
 
 if __name__ =='__main__':
     app.run(debug=True)  
