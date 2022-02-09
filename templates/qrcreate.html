@@ -73,7 +73,7 @@
         <h4 style="color:rgb(0, 38, 255); font-size:20px;"> Made with Love,Python and Flask</h4>
         <p style="color:rgb(255, 0, 0); font-size:15px;">This QR CODE CREATOR is made with Python. Just add the link or any text below and hit Submit.<br>
         You will be then redirected to the QR Code, Where you can just right click and save it.</p>
-        <form action="{{ url_for("qrcreate")}}" method="post" style="color: blueviolet;">
+        <form action="{{ url_for('qrcreate')}}" method="post" style="color: blueviolet;">
             <label for="text">Text or Link:</label>
             <input type="text" id="text" name="textqr" placeholder="Text or Link">
             <button class="button button1"type="submit">Submit</button>
