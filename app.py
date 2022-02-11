@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, request, send_file, session,
 from pytube import YouTube
 from dotenv import load_dotenv
 from zenora import APIClient
-from src.speedtester import speed
 from src.downloader import ytdownload
 from src.database import PlayerDataBase
 import qrcode
@@ -57,11 +56,6 @@ def download():
         filepath = request.form.get('filepath')
         return send_file(filepath, as_attachment=True)
     return redirect(url_for('downloader'))
-
-@app.route("/speedtest/")
-def speedtesting():
-    st = speed()
-    return (f"Download Speed-{st.downloads()}Bit/s\nUpload Speed-{st.uploads()}Bit/s\nPings-{st.pings()}\nHost Info-{st.host_infos()}\nIP-{st.ips()}")
 
 @app.route("/redirect/discord")
 def redirect_discord():
