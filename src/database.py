@@ -8,7 +8,7 @@ class PlayerDataBase():
     '''
     Used to access the Player DataBase.
     '''
-    def __init__(self, discord_id):
+    def __init__(self, discord_id=None):
         self.id = discord_id
         cluster_code = os.environ.get('CLUSTER')
         cluster = MongoClient(cluster_code)
@@ -27,13 +27,15 @@ class PlayerDataBase():
         else:
             return(True) #Account exists and/or details are correct.
 
-    def create_account(self, game_name):
+    def create_account(self, game_name, user):
         '''
         Creates an account in the DB. Returns False if the account wasn't made. 
         '''
         if self.user_acc is None:
             acc_dict = {"game_name":game_name,
                         "discord_id":self.id,
+                        "avatar_url": user.avatar_url,
+                        "prestige":0,
                         "roster":[],   
                         }
             self.db.insert_one(acc_dict)
@@ -49,7 +51,6 @@ class PlayerDataBase():
             return(self.user_acc)
         else:
             return(False)  
-    
 
     def get_fancy_champ_names(self):
         champ_name_list = ['ABOMINATION', 'ABOMINATION (IMMORTAL)', 'ÆGON', 'AGENT VENOM', 'AIR-WALKER', 'AMERICA CHAVEZ', 'ANGELA', 'ANNIHILUS', 'ANT-MAN', 'ANTI-VENOM', 'APOCALYPSE', 'ARCHANGEL', 'BEAST', 'BISHOP', 'BLACK BOLT', 'BLACK PANTHER', 'BLACK PANTHER (CIVIL WAR)', 'BLACK WIDOW', 'BLACK WIDOW (CLAIRE VOYANT)', 'BLACK WIDOW (DEADLY ORIGIN)', 'BLADE', 'CABLE', 'CAPTAIN AMERICA', 'CAPTAIN AMERICA (INFINITY WAR)', 'CAPTAIN AMERICA (SAM WILSON)', 'CAPTAIN AMERICA (WWII)', 'CAPTAIN MARVEL', 'CAPTAIN MARVEL (CLASSIC)', 'CARNAGE', 'CIVIL WARRIOR', 'COLOSSUS', 'CORVUS GLAIVE', 'COSMIC GHOST RIDER', 'CROSSBONES', 'CULL OBSIDIAN', 'CYCLOPS (BLUE TEAM)', 'CYCLOPS (NEW XAVIER SCHOOL)', 'DAREDEVIL (CLASSIC)', "DAREDEVIL (HELL'S KITCHEN)", 'DARKHAWK', 'DEADPOOL', 'DEADPOOL (X-FORCE)', 'DIABLO', 'DOCTOR DOOM', 'DOCTOR OCTOPUS', 'DOCTOR STRANGE', 'DOCTOR VOODOO', 'DOMINO', 'DORMAMMU', 'DRAGON MAN', 'DRAX', 'EBONY MAW', 'ELECTRO', 'ELEKTRA', 'ELSA BLOODSTONE', 'EMMA FROST', 'FALCON', 'GAMBIT', 'GAMORA', 'GHOST', 'GHOST RIDER', 'GOLDPOOL', 'GREEN GOBLIN', 'GROOT', 'GUARDIAN', 'GUILLOTINE', 'GUILLOTINE 2099', 'GWENPOOL', 'HAVOK', 'HAWKEYE', 'HEIMDALL', 'HELA', 'HERCULES', 'HIT-MONKEY', 'HOWARD THE DUCK', 'HULK', 'HULK (IMMORTAL)', 'HULK (RAGNAROK)', 'HULKBUSTER', 'HUMAN TORCH', 'HYPERION', 'ICEMAN', 'IKARIS', 'INVISIBLE WOMAN', 'IRON FIST', 'IRON FIST (IMMORTAL)', 'IRON MAN', 'IRON MAN (INFINITY WAR)', 'IRON PATRIOT', 'JABARI PANTHER', 'JOE FIXIT', 'JUBILEE', 'JUGGERNAUT', 'KANG', 'KARNAK', 'KILLMONGER', 'KING GROOT', 'KINGPIN', 'KITTY PRYDE', 'KNULL', 'KORG', 'KRAVEN', 'LOKI', 'LONGSHOT', 'LUKE CAGE', 'MISTY KNIGHT', 'M.O.D.O.K.', 'MAGIK', 'MAGNETO', 'MAGNETO (HOUSE OF X)', 'MAN-THING', 'MANGOG', 'MASACRE', 'MEDUSA', 'MEPHISTO', 'MISTER FANTASTIC', 'MISTER NEGATIVE', 'MISTER SINISTER', 'MOJO', 'MOLE MAN', 'MOON KNIGHT', 'MORDO', 'MORNINGSTAR', 'MS. MARVEL', 'MS. MARVEL (KAMALA KHAN)', 'MYSTERIO', 'NAMOR', 'NEBULA', 'NICK FURY', 'NIGHT THRASHER', 'NIGHTCRAWLER', 'NIMROD', 'NOVA', 'ODIN', 'OLD MAN LOGAN', 'OMEGA RED', 'PENI PARKER', 'PHOENIX', 'PLATINUMPOOL', 'PROFESSOR X', 'PROXIMA MIDNIGHT', 'PSYCHO-MAN', 'PSYLOCKE', 'PUNISHER', 'PUNISHER 2099', 'PURGATORY', 'QUAKE', 'RED GOBLIN', 'RED GUARDIAN', 'RED HULK', 'RED SKULL', 'RHINO', 'ROCKET RACCOON', 'ROGUE', 'RONAN', 'RONIN', 'SABRETOOTH', 'SASQUATCH', 'SAURON', 'SCARLET WITCH', 'SCARLET WITCH (CLASSIC)', 'SENTINEL', 'SENTRY', 'SERSI', 'SHANG-CHI', 'SHE-HULK', 'SILVER CENTURION', 'SILVER SURFER', 'SORCERER SUPREME', 'SPIDER-GWEN', 'SPIDER-HAM', 'SPIDER-MAN (CLASSIC)', 'SPIDER-MAN (MILES MORALES)', 'SPIDER-MAN (STARK ENHANCED)', 'SPIDER-MAN (STEALTH SUIT)', 'SPIDER-MAN (SYMBIOTE)', 'SPIDER-MAN 2099', 'SQUIRREL GIRL', 'STAR-LORD', 'STORM', 'STORM (PYRAMID X)', 'STRYFE', 'SUNSPOT', 'SUPER-SKRULL', 'SUPERIOR IRON MAN', 'SYMBIOTE SUPREME', 'TASKMASTER', 'TERRAX', 'THANOS', 'THE CHAMPION', 'THE HOOD', 'THE OVERSEER', 'THING', 'THOR', 'THOR (JANE FOSTER)', 'THOR (RAGNAROK)', 'TIGRA', 'TOAD', 'ULTRON', 'ULTRON', 'UNSTOPPABLE COLOSSUS', 'VENOM', 'VENOM THE DUCK', 'VENOMPOOL', 'VISION', 'VISION (AARKUS)', 'VISION (AGE OF ULTRON)', 'VOID', 'VULTURE', 'WAR MACHINE', 'WARLOCK', 'WASP', 'WINTER SOLDIER', 'WOLVERINE', 'WOLVERINE (WEAPON X)', 'WOLVERINE (X-23)', 'YELLOWJACKET', 'YONDU']
@@ -69,7 +70,7 @@ class PlayerDataBase():
         except:
             return False    
 
-    def add_champ(self,champname, tier, rank, signature):
+    def add_champ(self,champname, tier, rank, signature, user):
         self.db = self.cluster["MCOC"]["Account"]  
         infodb = self.cluster['MCOC']['Champs']
         gamename = self.user_acc['game_name']
@@ -114,13 +115,22 @@ class PlayerDataBase():
                             'champ_name':champ_details['data'][f'{tier}+{rank}']['name'],
                             'tier': tier,
                             'rank': rank,
-                            'prestige':champ_details['data'][f'{tier}+{rank}']['prestige'],
+                            'prestige':int(champ_details['data'][f'{tier}+{rank}']['prestige']),
                             'sig_number':signature,
                             'img_link':champ_details['data'][f'{tier}+{rank}']['img_potrait'],
                             'champid':f'{champ_details["champid"]}+{signature}+{tier}+{rank}',
                             'url_page':champ_details['data'][f'{tier}+{rank}']['url_page']
                         }
                         player_check['roster'].append(champ_info)
+                        prestige = 0
+                        prestige_list = []
+                        for user_dict in player_check['roster']:
+                            prestige_list.append(user_dict['prestige'])
+                        for prestige_in_dict in prestige_list:
+                            prestige = prestige+prestige_in_dict
+                        prestige = prestige/len(prestige_list)  
+                        player_check['prestige'] = prestige     
+                        player_check['avatar_url'] = user.avatar_url
                         self.db.find_one_and_replace({"game_name":gamename}, player_check)
                         self.details = f"Added {tier} star {champ_details['data'][f'{tier}+{rank}']['name']} of rank {rank}, tier {tier} and signature {signature}"
                 else:
@@ -131,10 +141,39 @@ class PlayerDataBase():
                             roster_dict['sig_number'] = signature
                             roster_dict['rank'] = rank
                             roster_dict['champid'] = f'{champ_details["champid"]}+{signature}'
-                            break        
+                            break   
+                        for user_dict in player_check['roster']:
+                            prestige_list.append(user_dict['prestige'])
+                        for prestige_in_dict in prestige_list:
+                            prestige = prestige+prestige_in_dict
+                        prestige = prestige/len(prestige_list)  
+                        player_check['prestige'] = prestige   
+                        player_check['avatar_url'] = user.avatar_url                            
                     self.db.find_one_and_replace({"game_name":gamename}, player_check)                         
             else:
                 self.error = 'Champname is incorrect. Refer to https://github.com/Rexians/uma/blob/master/champnames.md for correct champnames.'    
         else:
             self.error = 'Player with this name doesn\'t exists.'                                  
 
+    def get_users_data(self):
+        documents = self.db.find({}, {'_id': 0})
+        user_list = []
+        for document in documents:
+            user_list.append(document)
+        return user_list
+
+    def get_users_advanced_data(self):
+        documents = self.db.find({}, {'_id': 0})
+        users_dict = {}
+        for document in documents:
+            users_dict[document['discord_id']] = document
+        return users_dict    
+
+
+    def get_ids(self):
+        documents = self.db.find({}, {'_id': 0})
+        ids_list = []
+        for document in documents:
+            user_id = document['discord_id']
+            ids_list.append(user_id)
+        return ids_list            

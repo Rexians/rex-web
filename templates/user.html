@@ -14,21 +14,13 @@
     <title>{{title}}</title>
 </head>
 <body style="background:black;">
-    {% if redirect_success %}
-        <div class="alert alert-info alert-dismissible fade show"> <!--Create Alert-->
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Hey! </strong>Your Account has been successfully registered🥳🥳! Join our Official Discord Server <a href="https://dsc.gg/rexians-bot" class="alert-link">from here!</a>
-        </div>
-    {% else %}
-    {% endif %}       
     <div class="jumbotron text-center text-white">
         <h1 class="display-4" style="font-family: Audiowide">{{details['game_name']}}</h1>
         <p class="lead" style="font-family: Roboto Condensed">About Me: Coming Soon!</p>
         <p class="lead" style="font-family: Roboto Condensed">Titles: Coming Soon!</p>
         <p class="lead">
-            <a class="btn btn-primary btn-sm" href="https://discord.com/users/{{user.id}}" role="button">Talk on Discord</a>
+            <a class="btn btn-primary btn-sm" href="https://discord.com/users/{{details['discord_id']}}" role="button">Talk on Discord</a>
         </p> 
-        <a href="/addchamp">Add Champs in roster</a>
         <hr class="my-4">   
     </div>    
 
@@ -64,14 +56,12 @@
                             <a href="{{roster_dict['url_page']}}" class="btn btn-primary">Auntm.ai ➡️</a>                                          
                             </div>
                     </div>  
-                {% else %} 
-                    <h1 class="text-white">No Champs Found! Add some <a href="/addchamps">here!</a></p>
+                {% else %}
+                    <p>Ok</p>    
                 {% endfor %}        
             {% else %}    
                 <p>Not possible</p>
             {% endif %}       
-                  
-
         </div>  
     </div>      
 </body>

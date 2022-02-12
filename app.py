@@ -102,7 +102,7 @@ def gamename():
             if request.method == 'POST':
                 gname = request.form.get('gname')
                 db = PlayerDataBase(user.id)
-                acc = db.create_account(gname)
+                acc = db.create_account(gname, user)
                 if acc == True: #Account has been created 
                     return redirect('/profile/redirect')
                 else: #Account is already there.
@@ -150,12 +150,11 @@ def champ_adder():
         champ_names = db.get_fancy_champ_names()
         if 'POST' in request.method:
             champname = db.fancy_to_standard(request.form.get('champ-name'))
-            print(champname)
             if champname != False:
                 tier = int(request.form.get('champ-tier'))
                 rank = int(request.form.get('champ-rank'))
                 signature = int(request.form.get('champ-sig'))
-                db.add_champ(champname, tier, rank, signature)
+                db.add_champ(champname, tier, rank, signature, user)
                 if db.error != None:
                     return render_template('addchamp.html', error_status=True, error=db.error, title = user.username, details=details, champ_names=champ_names)
                 elif db.details != None:
@@ -164,6 +163,34 @@ def champ_adder():
     else:
         return redirect('/login')
 
+@app.route('/users')
+def users():
+    db = PlayerDataBase()
+    users_data = db.get_users_data()   
+    return render_template('users.html', users_data=users_data)
 
+
+@app.route('/user/') #/user?id=blabla
+def user():
+    try:
+        user_id = request.args.get('id')
+        if user_id is not None:
+            if 'token' in session:
+                db = PlayerDataBase()
+                ids_list = db.get_ids()
+                if int(user_id) in ids_list:
+                    db = PlayerDataBase(int(user_id))
+                    details = db.get_account()
+                    return render_template('user.html', details=details)
+                else:
+                    return 'Player Not Found!'    
+            else:
+                return redirect('/login')    
+        else:        
+            raise LookupError
+    except LookupError:
+        return render_template('404.html')
+
+        
 if __name__ =='__main__':
-    app.run(debug=False)  
+    app.run(debug=True)  
