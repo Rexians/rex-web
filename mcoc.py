@@ -1,11 +1,11 @@
-from flask import Flask, render_template, redirect, request, send_file, session, url_for
-from pytube import YouTube
-from dotenv import load_dotenv
-from zenora import APIClient
-from src.downloader import ytdownload
-from src.database import PlayerDataBase
-import qrcode
 import os
+
+from dotenv import load_dotenv
+from flask import (Flask, redirect, render_template, request,
+                   session)
+from zenora import APIClient
+
+from src.database import AllianceDataBase, PlayerDataBase
 
 load_dotenv()
 
@@ -18,44 +18,13 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'IndominusRexian'
 client = APIClient(token=token, client_secret=client_secret)
 
-
 @app.route("/")
 def home():
     if 'token' in session:
         bearer_client = APIClient(session['token'], bearer=True)
         user = bearer_client.users.get_current_user()         
-        return render_template("home.html", details=user)
-    return render_template("home.html",)
-
-@app.route("/test/")
-def test():
-    return "Test Page"
-
-@app.route("/qrcreate/", methods =["GET", "POST"])
-def qrcreate():
-    if request.method == "POST":
-        text_qr = request.form.get("textqr")
-        qr = qrcode.make(f"{text_qr}")
-        qr.save("qr_code.png")
-        filename = "qr_code.png"
-        return send_file(filename, mimetype='image/gif')
-    return render_template("qrcreate.html",)
-
-@app.route("/downloader/",methods = ['GET', 'POST'])
-def downloader():
-    if request.method == 'POST':
-        yt = ytdownload()
-        link = YouTube(request.form.get("ytlink"))
-        filepath = yt.download(link)
-        return render_template("video_watch.html", filetitle=link.title, filepath= filepath, thumbnail= link.thumbnail_url)
-    return render_template("downloader.html", )    
-
-@app.route("/download/",methods = ['GET', 'POST'])
-def download():
-    if request.method == 'POST':
-        filepath = request.form.get('filepath')
-        return send_file(filepath, as_attachment=True)
-    return redirect(url_for('downloader'))
+        return render_template("mcoc.html", details=user)
+    return render_template("mcoc.html")
 
 @app.route("/redirect/discord")
 def redirect_discord():
@@ -169,7 +138,6 @@ def users():
     users_data = db.get_users_data()   
     return render_template('users.html', users_data=users_data)
 
-
 @app.route('/user/') #/user?id=blabla
 def user():
     try:
@@ -191,6 +159,16 @@ def user():
     except LookupError:
         return render_template('404.html')
 
+@app.route('/alliance/create', methods=['GET', 'POST'])
+def alliance():
+    if 'token' in session:
+        if 'POST' in request.method:
+            ally_name = request.form.get('ally-name')
+            ally_tag = request.form.get('ally-tag')
+            print(ally_name, ally_tag)
+        return render_template('alliance_create.html')
+    else:
+        return redirect('/login')    
         
 if __name__ =='__main__':
-    app.run(debug=False)  
+    app.run(debug=True)  

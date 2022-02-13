@@ -1,7 +1,9 @@
+from http import client
 import os
+import random
 from pymongo import MongoClient
 from dotenv import load_dotenv
-
+import secrets
 load_dotenv()
 
 class PlayerDataBase():
@@ -36,6 +38,7 @@ class PlayerDataBase():
                         "discord_id":self.id,
                         "avatar_url": user.avatar_url,
                         "prestige":0,
+                        "about_me":None,
                         "roster":[],   
                         }
             self.db.insert_one(acc_dict)
@@ -169,7 +172,6 @@ class PlayerDataBase():
             users_dict[document['discord_id']] = document
         return users_dict    
 
-
     def get_ids(self):
         documents = self.db.find({}, {'_id': 0})
         ids_list = []
@@ -177,3 +179,34 @@ class PlayerDataBase():
             user_id = document['discord_id']
             ids_list.append(user_id)
         return ids_list            
+
+
+class AllianceDataBase():
+    def __init__(self) -> None:
+        cluster = os.environ.get('CLUSTER')
+        client = MongoClient(cluster)
+        db = client['MCOC']['Alliance']
+        self.db = db
+
+    def create_ally(self, ally_name, ally_tag, ally_token, date):
+        prev_ally = self.db.find_one({"ally_token":ally_token}, {'_id':0})
+        if prev_ally is not None:
+            data = {
+                "ally_name":ally_name,
+                "ally_tag":ally_tag,
+                "ally_token":ally_token,
+                "members":[],
+                "date_created":date}
+
+            self.db.insert_one(data)
+            return True #Ally doesn't exists, So created.
+        else:
+            return False #Ally exists.
+
+    def get_details(self, ally_token) -> dict : 
+        data = self.db.find_one({'ally_token':ally_token}, {'_id':0})
+        if data is not None:
+            return data
+        else:
+            return False    
+
