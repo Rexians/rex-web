@@ -12,7 +12,7 @@ MarkupSafe==2.0.1
 Pillow==9.0.0
 pymongo==4.0.1
 python-dotenv==0.19.2
-git+git://github.com/JavDomGom/pytube
+git+git://github.com/ifahadone/pytube
 qrcode==7.3.1
 requests==2.27.1
 urllib3==1.26.8
