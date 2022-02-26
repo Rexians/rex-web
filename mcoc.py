@@ -6,6 +6,7 @@ from flask import (Flask, redirect, render_template, request,
 from zenora import APIClient
 
 from src.database import AllianceDataBase, PlayerDataBase
+from src.downloader import YT
 
 load_dotenv()
 
@@ -20,11 +21,13 @@ client = APIClient(token=token, client_secret=client_secret)
 
 @app.route("/")
 def home():
+    yt = YT()
+    links = yt.get_mcoc_links()
     if 'token' in session:
         bearer_client = APIClient(session['token'], bearer=True)
         user = bearer_client.users.get_current_user()         
-        return render_template("mcoc.html", details=user)
-    return render_template("mcoc.html")
+        return render_template("mcoc.html", details=user, youtube_links=links)
+    return render_template("mcoc.html", youtube_links=links)
 
 @app.route("/redirect/discord")
 def redirect_discord():
