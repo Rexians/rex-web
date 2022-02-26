@@ -15,6 +15,12 @@
     <div class="container p-3 my-5 bg-primary text-white" style="font-family: Rowdies"> <!--Responsive Fixed Width Container, p is padding of border-->
         <h1 class="display-1">Rexians</h1>
     </div>
+    {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show"> <!--Create Alert-->
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Error! </strong>{{error}}</a>
+        </div>   
+    {% endif %}
     {% if user %}
         <div class="user-details container pt-3 text-center">
             <img src="{{user.avatar_url}}" class="rounded img-fluid">

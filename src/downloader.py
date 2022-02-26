@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from pytube import Search
 import random
 
@@ -20,12 +19,12 @@ class YT:
         query = random.choice(queries)
         s = Search(query)
         links = []
-        i = 0
-        while i!=10:
-            for result in s.results:
+        results = s.results
+        for result in results:
+            if len(links) == 10:
+                break
+            else:
                 id = result.video_id
-                link = f'https://youtube.com/watch?v={id}'
+                link = f'//youtube.com/embed/{id}'
                 links.append(link)
-                i+=1
-        return links          
-        
+        return links

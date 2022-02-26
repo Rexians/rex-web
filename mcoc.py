@@ -74,11 +74,22 @@ def gamename():
             if request.method == 'POST':
                 gname = request.form.get('gname')
                 db = PlayerDataBase(user.id)
-                acc = db.create_account(gname, user)
-                if acc == True: #Account has been created 
-                    return redirect('/profile/redirect')
-                else: #Account is already there.
-                    return redirect('/login/redirect')  
+                dbs = db.get_users_data()
+                redir = False
+                for dicts in dbs:
+                    print(dbs)
+                    if dicts['game_name'] == gname:
+                        print('Exists')
+                        redir = True
+                        return render_template('gamename.html', error='Gamename exists!', user=user)
+                if redir == False:
+                    acc = db.create_account(gname, user)
+                    if acc == True: #Account has been created 
+                        return redirect('/profile/redirect')
+                    else: #Account is already there.
+                        return redirect('/login/redirect')
+
+
         else:
             if user.id == details['discord_id']:
                 return redirect('/profile')                          
@@ -122,15 +133,22 @@ def champ_adder():
         champ_names = db.get_fancy_champ_names()
         if 'POST' in request.method:
             champname = db.fancy_to_standard(request.form.get('champ-name'))
-            if champname != False:
-                tier = int(request.form.get('champ-tier'))
-                rank = int(request.form.get('champ-rank'))
-                signature = int(request.form.get('champ-sig'))
+            tier = request.form.get('champ-tier')
+            rank = request.form.get('champ-rank')
+            signature = request.form.get('champ-sig')  
+            checker = [champname, tier, rank, signature]  
+            if None not in checker:
+                tier = int(tier)
+                rank = int(rank)
+                signature =int(signature)
+                
                 db.add_champ(champname, tier, rank, signature, user)
                 if db.error != None:
-                    return render_template('addchamp.html', error_status=True, error=db.error, title = user.username, details=details, champ_names=champ_names)
+                    return render_template('addchamp.html', error_status=True, error=db.error, title = user.username, details=details, champ_names=champ_names, sigs=range(0,201))
                 elif db.details != None:
-                    return render_template('addchamp.html', error_status=False, detail=db.details, title = user.username, details=details, champ_names=champ_names)    
+                    return render_template('addchamp.html', error_status=False, detail=db.details, title = user.username, details=details, champ_names=champ_names, sigs=range(0,201))    
+            else:
+                return render_template('addchamp.html', error_status=True, error='One or more fields was empty!', title = user.username, details=details, champ_names=champ_names, sigs=range(0,201))    
         return render_template('addchamp.html', details=details, champ_names=champ_names, sigs=range(0,201), title = user.username)
     else:
         return redirect('/login')

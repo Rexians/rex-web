@@ -1,10 +1,8 @@
-from http import client
 import os
-import random
 from pymongo import MongoClient
 from dotenv import load_dotenv
-import secrets
 load_dotenv()
+from operator import itemgetter
 
 class PlayerDataBase():
     '''
@@ -71,49 +69,115 @@ class PlayerDataBase():
             standard_name = standard_champs_list[fancy_index]
             return standard_name
         except:
-            return False    
+            return None    
 
-    def add_champ(self,champname, tier, rank, signature, user):
+    def add_champ(self,champname, tier:int, rank:int, signature:int, user):
         self.db = self.cluster["MCOC"]["Account"]  
         infodb = self.cluster['MCOC']['Champs']
-        gamename = self.user_acc['game_name']
-        player_check = self.db.find_one({"game_name":gamename}, {'_id': 0}) 
+        discord_id = self.id
+        player_check = self.db.find_one({"discord_id":int(discord_id)}, {'_id': 0}) 
         champ_details = infodb.find_one({'champid':champname}, {'_id': 0})
         create_new = True  
         if player_check is not None:
-            for roster_dict in player_check['roster']:
-                if tier == 6 and signature >200 and rank >4:
-                    self.error = 'Signature for a 6 star should not be above than 200 or/and rank of a 6 star should not be above than 4.'
-                elif tier == 5 and signature >200 and rank>5: 
-                    self.error = 'Signature for a 5 star should not be above than 200 or/and rank of a 5 star should not be above than 5.'  
-                elif tier == 4 and signature >99:
-                    self.error = 'Signature for a 4 star should not be above than 99 or/and rank of a 4 star should not be above than 5.'   
-                elif tier == 3 and signature >99 and rank>4:
-                    self.error = 'Signature for a 3 star should not be above than 99 or/and rank of a 3 star should not be above than 4.' 
-                elif tier == 2 and signature>99 and rank>3: 
-                    self.error = 'Signature for a 2 star should not be above than 99 or/and rank of a 2 star should not be above than 3.' 
-                elif tier == 1:
-                    self.error = '2 star and 1 star champs are not supported.'
-                else:                 
+            error = True
+            if tier == 6:
+                if signature >200:
+                    self.error = 'Signature for a 6 star should not be above than 200.'                            
+                elif rank >4:
+                    self.error = 'Rank of a 6 star should not be above than 4.'
+                else:
+                    error = False   
+
+            elif tier == 5: 
+                if signature >200:
+                    self.error = 'Signature for a 5 star should not be above than 200.'
+                elif rank >5:
+                    self.error = 'Rank of a 5 star should not be above than 5.'
+                else:
+                    error = False   
+        
+            elif tier == 4:
+                if signature >99:
+                    self.error = 'Signature for a 4 star should not be above than 99.'
+                elif rank >5:
+                    self.error = 'Rank of a 4 star should not be above than 5.'                    
+                else:
+                    error = False   
+                    
+            elif tier == 3:
+                if signature >99:
+                    self.error = 'Signature for a 3 star should not be above than 99.'
+                elif rank >4:
+                    self.error = 'Rank of a 3 star should not be above than 4.'     
+                else:
+                    error = False   
+
+            elif tier == 2: 
+                if signature >99:
+                    self.error = 'Signature for a 2 star should not be above than 99.'
+                elif rank >3:
+                    self.error = 'Rank of a 2 star should not be above than 3.'         
+                else:
+                    error = False   
+
+            elif tier == 1:
+                self.error = '1 star champs are not supported.'    
+
+            if error == False:
+                for roster_dict in player_check['roster']:                
                     if roster_dict['champ_name'] == champ_details['data'][f'{tier}+{rank}']['name'] and roster_dict['tier'] == int(tier):
-                        create_new = False
-                        print(create_new)
-                        break            
+                        create_new = False                        
+                        break
+            else:
+                pass        
+                
             if champ_details is not None:
                 if create_new == True:
-                    if tier == 6 and signature >200 and rank >4:
-                        self.error = 'Signature for a 6 star should not be above than 200 or/and rank of a 6 star should not be above than 4.'
-                    elif tier == 5 and signature >200 and rank>5: 
-                        self.error = 'Signature for a 5 star should not be above than 200 or/and rank of a 5 star should not be above than 5.'  
-                    elif tier == 4 and signature >99:
-                        self.error = 'Signature for a 4 star should not be above than 99 or/and rank of a 4 star should not be above than 5.'   
-                    elif tier == 3 and signature >99 and rank>4:
-                        self.error = 'Signature for a 3 star should not be above than 99 or/and rank of a 3 star should not be above than 4.' 
-                    elif tier == 2 and signature>99 and rank>3: 
-                        self.error = 'Signature for a 2 star should not be above than 99 or/and rank of a 2 star should not be above than 3.' 
+                    error = True
+                    if tier == 6:
+                        if signature >200:
+                            self.error = 'Signature for a 6 star should not be above than 200.'                            
+                        elif rank >4:
+                            self.error = 'Rank of a 6 star should not be above than 4.'
+                        else:
+                            error = False   
+
+                    elif tier == 5: 
+                        if signature >200:
+                            self.error = 'Signature for a 5 star should not be above than 200.'
+                        elif rank >5:
+                            self.error = 'Rank of a 5 star should not be above than 5.'
+                        else:
+                            error = False   
+                
+                    elif tier == 4:
+                        if signature >99:
+                            self.error = 'Signature for a 4 star should not be above than 99.'
+                        elif rank >5:
+                            self.error = 'Rank of a 4 star should not be above than 5.'                    
+                        else:
+                            error = False   
+                            
+                    elif tier == 3:
+                        if signature >99:
+                            self.error = 'Signature for a 3 star should not be above than 99.'
+                        elif rank >4:
+                            self.error = 'Rank of a 3 star should not be above than 4.'     
+                        else:
+                            error = False   
+    
+                    elif tier == 2: 
+                        if signature >99:
+                            self.error = 'Signature for a 2 star should not be above than 99.'
+                        elif rank >3:
+                            self.error = 'Rank of a 2 star should not be above than 3.'         
+                        else:
+                            error = False   
+    
                     elif tier == 1:
-                        self.error = '2 star and 1 star champs are not supported.'
-                    else:                                             
+                        self.error = '1 star champs are not supported.'                         
+    
+                    if error == False:                                         
                         champ_info = {
                             'champ_name':champ_details['data'][f'{tier}+{rank}']['name'],
                             'tier': tier,
@@ -134,25 +198,32 @@ class PlayerDataBase():
                         prestige = prestige/len(prestige_list)  
                         player_check['prestige'] = prestige     
                         player_check['avatar_url'] = user.avatar_url
-                        self.db.find_one_and_replace({"game_name":gamename}, player_check)
+                        player_check['roster'] = sorted(player_check['roster'], key=itemgetter('prestige'), reverse=True)
+                        self.db.find_one_and_replace({"discord_id":discord_id}, player_check)
                         self.details = f"Added {tier} star {champ_details['data'][f'{tier}+{rank}']['name']} of rank {rank}, tier {tier} and signature {signature}"
+                    else:
+                        pass
                 else:
-                    #Updates the signature and champid
+                    #Updates the signature, rank and champid
                     for roster_dict in player_check['roster']:
                         if roster_dict['champ_name'] == champ_details['data'][f'{tier}+{rank}']['name'] and roster_dict['tier'] == int(tier): 
                             self.details = f"Updated {tier} star {champ_details['data'][f'{tier}+{rank}']['name']} of previous signature {roster_dict['sig_number']} to new signature {signature} and previous rank {roster_dict['rank']} to new rank {rank}"
                             roster_dict['sig_number'] = signature
                             roster_dict['rank'] = rank
-                            roster_dict['champid'] = f'{champ_details["champid"]}+{signature}'
-                            break   
+                            roster_dict['champid'] = f'{champ_details["champid"]}+{signature}+{tier}+{rank}'
+                            break  
+                        prestige = 0 
+                        prestige_list = []
                         for user_dict in player_check['roster']:
                             prestige_list.append(user_dict['prestige'])
                         for prestige_in_dict in prestige_list:
                             prestige = prestige+prestige_in_dict
                         prestige = prestige/len(prestige_list)  
                         player_check['prestige'] = prestige   
-                        player_check['avatar_url'] = user.avatar_url                            
-                    self.db.find_one_and_replace({"game_name":gamename}, player_check)                         
+                        player_check['avatar_url'] = user.avatar_url 
+                        player_check['roster'] = sorted(player_check['roster'], key=itemgetter('prestige'), reverse=True)                           
+                    self.db.find_one_and_replace({"discord_id":discord_id}, player_check) 
+                    self.details = f"Updated {tier} star {champ_details['data'][f'{tier}+{rank}']['name']}. "                        
             else:
                 self.error = 'Champname is incorrect. Refer to https://github.com/Rexians/uma/blob/master/champnames.md for correct champnames.'    
         else:
