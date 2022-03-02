@@ -5,8 +5,8 @@ from flask import (Flask, redirect, render_template, request,
                    session)
 from zenora import APIClient
 
-from src.database import AllianceDataBase, PlayerDataBase
-from src.downloader import YT
+from helpers.database import AllianceDataBase, PlayerDataBase
+from helpers.downloader import YT
 
 load_dotenv()
 
@@ -29,15 +29,15 @@ def home():
         return render_template("mcoc.html", details=user, youtube_links=links)
     return render_template("mcoc.html", youtube_links=links)
 
-@app.route("/redirect/discord")
+@app.route("/redirect/discord/")
 def redirect_discord():
     return render_template("discord_redirect.html", )
 
-@app.route("/soon")
+@app.route("/soon/")
 def soon():
     return render_template("soon.html", )
 
-@app.route("/404")
+@app.route("/404/")
 def invalid_route_404():
     return render_template("404.html", )
 
@@ -45,25 +45,25 @@ def invalid_route_404():
 def invalid_route(e): 
     return render_template("404.html",templates_folder="templates")
 
-@app.route('/login')
+@app.route('/login/')
 def login():
     if 'token' in session:
         bearer_client = APIClient(session['token'], bearer=True)
         user = bearer_client.users.get_current_user()
-        return redirect('/profile')  
+        return redirect('/profile/')  
     return render_template('login.html', oauth_uri=oauth_uri)
 
-@app.route('/oauth/callback')
+@app.route('/oauth/callback/')
 def callback():
     try:
         code = request.args['code']
         access_token = client.oauth.get_access_token(code, redirect_uri).access_token
         session['token'] = access_token
-        return redirect('/oauth/callback/gamename')
+        return redirect('/oauth/callback/gamename/')
     except:
-        return redirect('/login')
+        return redirect('/login/')
 
-@app.route('/oauth/callback/gamename', methods=['GET', 'POST'])
+@app.route('/oauth/callback/gamename/', methods=['GET', 'POST'])
 def gamename(): 
     if 'token' in session:
         bearer_client = APIClient(session['token'], bearer=True)
@@ -85,23 +85,23 @@ def gamename():
                 if redir == False:
                     acc = db.create_account(gname, user)
                     if acc == True: #Account has been created 
-                        return redirect('/profile/redirect')
+                        return redirect('/profile/redirect/')
                     else: #Account is already there.
-                        return redirect('/login/redirect')
+                        return redirect('/login/redirect/')
 
 
         else:
             if user.id == details['discord_id']:
-                return redirect('/profile')                          
+                return redirect('/profile/')                          
         return render_template('gamename.html', user=user)
-    return redirect('/login')    
+    return redirect('/login/')    
 
-@app.route('/logout')
+@app.route('/logout/')
 def logout():
     session.clear()
-    return redirect('/login')
+    return redirect('/login/')
 
-@app.route('/profile')
+@app.route('/profile/')
 def profile():
     if 'token' in session:
         bearer_client = APIClient(session['token'], bearer=True)
@@ -110,9 +110,9 @@ def profile():
         details = db.get_account()
         return render_template('profile.html', show_details=True, title=details['game_name'], details=details, user=user)
     else:
-        return redirect('/login')    
+        return redirect('/login/')    
 
-@app.route('/profile/redirect')
+@app.route('/profile/redirect/')
 def profile_redirect():
     if 'token' in session:
         bearer_client = APIClient(session['token'], bearer=True)
@@ -121,9 +121,9 @@ def profile_redirect():
         details = db.get_account()        
         return render_template('profile.html', redirect_success=True, show_details=True, title=details['game_name'], details=details, user=user)
     else:
-        return redirect('/login')
+        return redirect('/login/')
 
-@app.route('/addchamp', methods=['GET', 'POST'])
+@app.route('/addchamp/', methods=['GET', 'POST'])
 def champ_adder():
     if 'token' in session:
         bearer_client = APIClient(session['token'], bearer=True)
@@ -151,9 +151,9 @@ def champ_adder():
                 return render_template('addchamp.html', error_status=True, error='One or more fields was empty!', title = user.username, details=details, champ_names=champ_names, sigs=range(0,201))    
         return render_template('addchamp.html', details=details, champ_names=champ_names, sigs=range(0,201), title = user.username)
     else:
-        return redirect('/login')
+        return redirect('/login/')
 
-@app.route('/users')
+@app.route('/users/')
 def users():
     db = PlayerDataBase()
     users_data = db.get_users_data()   
@@ -174,13 +174,13 @@ def user():
                 else:
                     return 'Player Not Found!'    
             else:
-                return redirect('/login')    
+                return redirect('/login/')    
         else:        
             raise LookupError
     except LookupError:
         return render_template('404.html')
 
-@app.route('/alliance/create', methods=['GET', 'POST'])
+@app.route('/alliance/create/', methods=['GET', 'POST'])
 def alliance():
     if 'token' in session:
         if 'POST' in request.method:
@@ -189,7 +189,7 @@ def alliance():
             print(ally_name, ally_tag)
         return render_template('alliance_create.html')
     else:
-        return redirect('/login')    
+        return redirect('/login/')    
         
 if __name__ =='__main__':
     app.run(debug=True)  
