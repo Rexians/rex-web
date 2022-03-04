@@ -37,6 +37,7 @@ class PlayerDataBase():
                         "avatar_url": user.avatar_url,
                         "prestige":0,
                         "about_me":None,
+                        "alliance":None,
                         "roster":[],   
                         }
             self.db.insert_one(acc_dict)
@@ -251,22 +252,46 @@ class PlayerDataBase():
             ids_list.append(user_id)
         return ids_list            
 
+    def add_ally_token(self, ally_token):
+        user_acc = self.user_acc
+        user_acc['alliance'] = ally_token
+        change = self.db.find_one_and_replace({'discord_id':self.id}, user_acc)
+        if change is None:
+            return False
+        else:
+            return True    
+
+    def leave_ally(self):
+        user_acc = self.user_acc
+        user_acc['alliance'] = None
+        try:
+            self.db.find_one_and_replace({'discord_id':self.id}, user_acc)
+            return True
+        except:
+            return False    
 
 class AllianceDataBase():
+    '''
+    Used to access the Allinace DataBase.
+    '''
     def __init__(self) -> None:
         cluster = os.environ.get('CLUSTER')
         client = MongoClient(cluster)
         db = client['MCOC']['Alliance']
         self.db = db
 
-    def create_ally(self, ally_name, ally_tag, ally_token, date):
-        prev_ally = self.db.find_one({"ally_token":ally_token}, {'_id':0})
-        if prev_ally is not None:
+    def create_ally(self, ally_name, ally_tag, ally_token, date, leader_profile:dict):
+        prev_ally = self.db.find_one({"ally_name":ally_name, "ally_tag":ally_tag, "ally_token":ally_token}, {'_id':0})
+        if prev_ally is None:
             data = {
                 "ally_name":ally_name,
                 "ally_tag":ally_tag,
                 "ally_token":ally_token,
-                "members":[],
+                "members":{
+                    'leader':leader_profile, 
+                    'officers':[], 
+                    'members':[]
+                    },
                 "date_created":date}
 
             self.db.insert_one(data)
@@ -274,10 +299,28 @@ class AllianceDataBase():
         else:
             return False #Ally exists.
 
-    def get_details(self, ally_token) -> dict : 
+    def get_details(self, ally_token): 
         data = self.db.find_one({'ally_token':ally_token}, {'_id':0})
         if data is not None:
             return data
         else:
             return False    
+
+    def add_member(self, ally_token, member_profile:dict):       
+        ally = self.db.find_one({"ally_token":ally_token}, {'_id':0})
+        if ally is not None:
+            ally['members']['members'].append(member_profile)
+            self.db.find_one_and_replace({"ally_token":ally_token}, ally)
+            return True
+        else:
+            return False #Ally token invalid/Ally doesn't exist! 
+
+    def add_officer(self, ally_token, officer_profile:dict):       
+        ally = self.db.find_one({"ally_token":ally_token}, {'_id':0})
+        if ally is not None:
+            ally['members']['officers'].append(officer_profile)
+            self.db.find_one_and_replace({"ally_token":ally_token}, ally)
+            return True
+        else:
+            return False #Ally token invalid/Ally doesn't exist!
 
