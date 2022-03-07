@@ -41,15 +41,24 @@ def alliance_create():
 @alliance.route('/alliance/leave/')
 def alliance_leave():
     if 'token' in session:
-        bearer_client = APIClient(session['token'], bearer=True)
-        user = bearer_client.users.get_current_user()  
-        db = PlayerDataBase(user.id)
-        leave = db.leave_ally()
-        if leave == True:
-            session.pop('ally_token')
-            return('Done!')
+        if 'ally_token' in session:
+            bearer_client = APIClient(session['token'], bearer=True)
+            user = bearer_client.users.get_current_user()  
+            db = PlayerDataBase(user.id)
+            db2 = AllianceDataBase()
+            leave = db.leave_ally()
+            leave2 = db2.leave_ally()
+            if leave == True:
+                if leave2 == True:
+                    session.pop('ally_token')
+                    print('Removed')
+                    return('Done!')
+                else:
+                    return redirect('/alliance/')    
+            else:
+                return redirect('/alliance/')    
         else:
-            return redirect('/alliance/')    
+            return redirect('/alliance/join/')            
     else:
         return redirect('/login/')
 
@@ -57,51 +66,34 @@ def alliance_leave():
 def alliance_join_invite():
     if 'token' in session:  
         if 'ally_token' in session:
-            if session['ally_token'] == None:      
-                db = AllianceDataBase()
-                bearer_client = APIClient(session['token'], bearer=True)
-                user = bearer_client.users.get_current_user()                                              
-                db2 = PlayerDataBase(user.id)
-                user_details = db2.get_account()
-                try:
-                    ally_token = request.args.get('token')
-                except ValueError:   
-                    return render_template('404.html') 
-                details = db.get_details(ally_token)  
-                if details is not False:
-                    if user_details['alliance'] is None:
-                        if 'POST' in request.method:                    
-                            db2.add_ally_token(ally_token)
-                            db.add_member(ally_token, user_details)
-                            session['ally_token'] = ally_token                        
-                            return redirect('/alliance/')   
-                        return render_template('alliance_join_invite.html', details=details)
-                    else:
-                        session['ally_token'] = user_details['alliance']    
-                        print(session)                 
-                        return redirect('/alliance/')   
-                else: 
-                    return render_template('404.html')    
+            return redirect('/alliance/')
+        else:
+            ally_token = request.args.get('token')
+            bearer_client = APIClient(session['token'], bearer=True)
+            user = bearer_client.users.get_current_user()  
+            db = AllianceDataBase()
+            db2 = PlayerDataBase(user.id)
+            data = db.get_details(ally_token)   
+            user_data = db2.get_account()              
+            if data is not False:
+                session['ally_token'] = data['ally_token']
+                db.add_member(ally_token, user_data)
+                db2.add_ally_token(ally_token)
+                return redirect('/alliance/') 
             else:
-                return redirect('/alliance/')    
-
+                return('Wrong Token!')                      
     else:        
         return redirect('/login/')
 
 @alliance.route('/alliance/') 
 def alliance_page():
     if 'token' in session:
-        bearer_client = APIClient(session['token'], bearer=True)
-        user = bearer_client.users.get_current_user()                                              
-        db2 = PlayerDataBase(user.id)  
-        details = db2.get_account()   
-        if details['alliance'] is not None:
-            session['ally_token'] = details['alliance']
+        if 'ally_token' in session:
             db = AllianceDataBase()
-            details = db.get_details(session['ally_token'])           
+            details = db.get_details(session['ally_token'])               
             return render_template('alliance.html', details=details)    
         else:
-            return redirect('/alliance/join/')
+            return redirect('/alliance/join/')    
     else:
         return redirect('/login/')            
 
@@ -110,6 +102,10 @@ def alliance_settings():
     if 'token' in session:
         if 'ally_token' in session:
             return(f'To Invite members, Share this <a href=/alliance/join/invite/?token={session["ally_token"]}>link</a>')
+        else:
+            return redirect('/alliance/join/')    
+    else:
+        return redirect('/login/')               
 
 @alliance.route('/alliance/promote/', methods=['GET', 'POST'])
 def alliance_promote():

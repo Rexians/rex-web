@@ -324,3 +324,30 @@ class AllianceDataBase():
         else:
             return False #Ally token invalid/Ally doesn't exist!
 
+    def delete_ally(self, ally_token):
+        ally = self.db.delete_one({'ally_token':ally_token})
+        if ally.deleted_count == 1:
+            return True
+        else:
+            return False    
+
+    def leave_ally(self, ally_token, id:int):
+        try:
+            ally = self.db.find_one({"ally_token":ally_token}, {'_id':0})
+            if ally['members']['leader']['discord_id'] == id:
+                return False
+            else:
+                for officer in ally['members']['officers']:
+                    i = ally['members']['officers'].index(officer)
+                    if officer['discord_id'] == id:
+                        ally['members']['officers'].pop(i)
+                        return True
+                for member in ally['members']['members']:
+                    i = ally['members']['members'].index(member)
+                    if member['discord_id'] == id:
+                        ally['members']['members'].pop(i)
+                        return True                    
+        except:
+            return False
+
+                

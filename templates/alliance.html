@@ -21,21 +21,52 @@
         <hr class="my-4">   
     </div>    
 
-    <div class="container text-center text-white">
-        <h3>Roster:</h3>
-    </div>
-
-    <div class="roster">
+    <div class="members">
         <div class="row no-gutters">
+            <div class="container text-center text-white">
+                <h3>Leader:</h3>
+            </div>
             {% if details %}
-                <div class="leader card text-white" style="width: 15rem; background: black; border-color: white; border-spacing: 5px;">
-                    <img class="card-img-top" src="{{details['ally_name']}}" alt="Card image cap">
+                <div class="leader card text-white mx-auto" style="width: 15rem; background: black; border-color: white; margin-left: 20px; margin-right: 10px;">
+                    <img class="card-img-top" src="{{details['members']['leader']['avatar_url']}}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Ok</h5> 
+                        <h5 class="card-title text-center">{{details['members']['leader']['game_name']}}</h5> 
                         <h5 class="card-title">Ok</h5>                             
-                        <a href="/" class="btn btn-primary">Profile ➡️</a>                                          
+                        <a href="/user/?id={{details['members']['leader']['discord_id']}}" class="btn btn-primary">Profile ➡️</a>                                          
                         </div>
                 </div>  
+                <div class="container text-center text-white">
+                    <h3>Officers:</h3>
+                </div>                
+                {% for officer in details['members']['officers'] %}
+                    <div class="officer card text-white mx-auto" style="width: 15rem; background: black; border-color: white; margin-left: 20px; margin-right: 10px;">
+                        <img class="card-img-top" src="{{officer['avatar_url']}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{officer['game_name']}}</h5> 
+                            <h5 class="card-title">Ok</h5>                             
+                            <a href="/user/?id={{officer['discord_id']}}" class="btn btn-primary">Profile ➡️</a>                                          
+                            </div>
+                    </div>
+                {% else %}
+                    <h4 class='no-officers text-center text-white'>No Officers!</h4>  
+                    <br>
+                {% endfor %}  
+                
+                <div class="container text-center text-white">
+                    <h3>Members:</h3>
+                </div>                 
+                {% for member in details['members']['members'] %}
+                <div class="member card text-white" style="width: 15rem; background: black; border-color: white; margin-left: 20px; margin-right: 10px;">
+                    <img class="card-img-top" src="{{member['avatar_url']}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{member['game_name']}}</h5> 
+                        <h5 class="card-title">Ok</h5>                             
+                        <a href="/user/?id={{member['discord_id']}}" class="btn btn-primary">Profile ➡️</a>                                          
+                        </div>
+                </div>
+            {% else %}
+                <h4 class='no-members text-center text-white'>No Members!</h4>  
+            {% endfor %}      
             {% else %}    
                 <p>Not possible</p>
             {% endif %}                       

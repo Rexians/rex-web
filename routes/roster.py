@@ -47,7 +47,6 @@ def gamename():
                 dbs = db.get_users_data()
                 redir = False
                 for dicts in dbs:
-                    print(dbs)
                     if dicts['game_name'] == gname:
                         print('Exists')
                         redir = True
