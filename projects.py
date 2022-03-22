@@ -6,7 +6,7 @@ from flask import (Flask, redirect, render_template, request, send_file,
                    session, url_for)
 from pytube import YouTube
 
-from src.downloader import ytdownload
+from helpers.downloader import ytdownload
 
 load_dotenv()
 
@@ -41,15 +41,15 @@ def downloader():
     if request.method == 'POST':
         yt = ytdownload()
         link = YouTube(request.form.get("ytlink"))
-        filepath = yt.download(link)
-        return render_template("video_watch.html", filetitle=link.title, filepath= filepath, thumbnail= link.thumbnail_url)
+        url = yt.download(link)
+        return render_template("video_watch.html", filetitle=link.title, filepath= url, thumbnail= link.thumbnail_url)
     return render_template("downloader.html", )    
 
 @app.route("/download/",methods = ['GET', 'POST'])
 def download():
     if request.method == 'POST':
-        filepath = request.form.get('filepath')
-        return send_file(filepath, as_attachment=True)
+        url = request.form.get('filepath')
+        return send_file(url, as_attachment=True)
     return redirect(url_for('downloader'))
 
 @app.route("/redirect/discord")
@@ -57,4 +57,4 @@ def redirect_discord():
     return render_template("discord_redirect.html", )
 
 if __name__ =='__main__':
-    app.run(debug=True)  
+    app.run(debug=False)  

@@ -7,8 +7,8 @@ class ytdownload:
 
     def download(self,link):
         video = link.streams.filter(file_extension="mp4").first()
-        filepath = video.download()
-        return filepath
+        fp = video.download()
+        return fp
 
 class YT:
     def __init__(self) -> None:
