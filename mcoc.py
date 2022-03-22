@@ -37,4 +37,4 @@ def invalid_route(e):
     return render_template("404.html",templates_folder="templates")
 
 if __name__ =='__main__':
-    app.run(debug=True)  
+    app.run(debug=False)  
