@@ -1,0 +1,14 @@
+.sidebar {
+  width: 20%;
+  height: 100%;
+  margin-top: 6%;
+  border-left: ridge;
+  border-bottom: ridge;
+  box-sizing: border-box;
+  border-width: 4px;
+  border-color: #333333;
+  background-color: #121212;
+  position: fixed;
+  overflow-x: hidden;
+  right: 0;
+}

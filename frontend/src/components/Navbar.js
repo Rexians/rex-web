@@ -1,10 +1,17 @@
-import React from "react";
 import "../styles/Navbar.css";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ sidebarState, setSidebarState }) => {
+  const showSidebar = () => setSidebarState(!sidebarState);
+
   return (
     <div className="navbar">
-      <h2 className="title">R e x i a n s</h2>
+      <Link to="/home" className="title">
+        R E X I A N S
+      </Link>
+      <button className="sidebarbutton" onClick={showSidebar}>
+        +
+      </button>
     </div>
   );
 };
