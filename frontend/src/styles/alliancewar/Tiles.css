@@ -1,0 +1,435 @@
+.tile {
+  font-size: larger;
+  font-family: "MavenPro";
+  font-weight: 1000;
+  color: #555555;
+  background-color: rgba(38, 41, 42, 255);
+  border: solid;
+  border-width: 3px;
+  border-color: #555b66;
+  box-shadow: 0 2px 10px #ff5f1f;
+  width: 50px;
+  height: 45px;
+}
+
+.tile:hover {
+  transform: scale(1.1);
+}
+
+#tile55 {
+  margin-top: 3%;
+  position: absolute;
+  top: 1%;
+  right: 35%;
+}
+
+#tile54 {
+  margin-top: 3%;
+  position: absolute;
+  top: 1%;
+  left: 35%;
+}
+
+#tile53 {
+  margin-top: 3%;
+  position: absolute;
+  top: 24%;
+  right: 25%;
+}
+
+#tile52 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 20%;
+}
+
+#tile52:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile51 {
+  margin-top: 3%;
+  position: absolute;
+  top: 24%;
+  left: 25%;
+}
+
+#tile50 {
+  margin-top: 3%;
+  position: absolute;
+  top: 47%;
+  right: 33%;
+}
+
+#tile49 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 47%;
+}
+
+#tile49:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile48 {
+  margin-top: 3%;
+  position: absolute;
+  top: 47%;
+  left: 33%;
+}
+
+#tile47 {
+  margin-top: 3%;
+  position: absolute;
+  top: 70%;
+  right: 15%;
+}
+
+#tile46 {
+  margin-top: 3%;
+  position: absolute;
+  top: 70%;
+  left: 15%;
+}
+
+#tile45 {
+  margin-top: 3%;
+  position: absolute;
+  top: 85%;
+  right: 5%;
+}
+
+#tile44 {
+  margin-top: 3%;
+  position: absolute;
+  top: 94%;
+  right: 15%;
+}
+#tile43 {
+  margin-top: 3%;
+  position: absolute;
+  top: 85%;
+  right: 25%;
+}
+
+#tile42 {
+  margin-top: 3%;
+  position: absolute;
+  top: 85%;
+  left: 25%;
+}
+
+#tile41 {
+  margin-top: 3%;
+  position: absolute;
+  top: 94%;
+  left: 15%;
+}
+#tile40 {
+  margin-top: 3%;
+  position: absolute;
+  top: 85%;
+  left: 5%;
+}
+
+#tile39 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 90%;
+}
+
+#tile39:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+/* Fill in 38-36 */
+#tile38 {
+  margin-top: 3%;
+  position: absolute;
+  top: 106%;
+  right: 39%;
+}
+#tile37 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%); 
+  top: 115%;
+}
+#tile37:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile36 {
+  margin-top: 3%;
+  position: absolute;
+  top: 106%;
+  left: 39%;
+}
+
+#tile35 {
+  margin-top: 3%;
+  position: absolute;
+  top: 127%;
+  right: 5%;
+}
+
+#tile34 {
+  margin-top: 3%;
+  position: absolute;
+  top: 118%;
+  right: 15%;
+}
+#tile33 {
+  margin-top: 3%;
+  position: absolute;
+  top: 127%;
+  right: 25%;
+}
+
+#tile32 {
+  margin-top: 3%;
+  position: absolute;
+  top: 127%;
+  left: 25%;
+}
+
+#tile31 {
+  margin-top: 3%;
+  position: absolute;
+  top: 118%;
+  left: 15%;
+}
+#tile30 {
+  margin-top: 3%;
+  position: absolute;
+  top: 127%;
+  left: 5%;
+}
+
+#tile29 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 139%;
+}
+
+#tile29:hover {
+  transform: translate(-50%) scale(1.1);
+}
+#tile28 {
+  margin-top: 3%;
+  position: absolute;
+  top: 148%;
+  right: 39%;
+}
+
+#tile27 {
+  margin-top: 3%;
+  position: absolute;
+  top: 148%;
+  left: 39%;
+}
+
+#tile26 {
+  margin-top: 3%;
+  position: absolute;
+  top: 163%;
+  right: 25%;
+}
+
+#tile25 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 163%;
+}
+
+#tile25:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile24 {
+  margin-top: 3%;
+  position: absolute;
+  top: 163%;
+  left: 25%;
+}
+#tile23 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 181%;
+}
+
+#tile23:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile22 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 199%;
+}
+
+#tile22:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile21 {
+  margin-top: 3%;
+  position: absolute;
+  top: 214%;
+  right: 15%;
+}
+
+#tile20 {
+  margin-top: 3%;
+  position: absolute;
+  top: 214%;
+  left: 15%;
+}
+
+#tile19 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 220%;
+}
+
+#tile19:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile18 {
+  margin-top: 3%;
+  position: absolute;
+  top: 229%;
+  right: 5%;
+}
+
+#tile17 {
+  margin-top: 3%;
+  position: absolute;
+  top: 238%;
+  right: 15%;
+}
+#tile16 {
+  margin-top: 3%;
+  position: absolute;
+  top: 229%;
+  right: 25%;
+}
+
+#tile15 {
+  margin-top: 3%;
+  position: absolute;
+  top: 229%;
+  left: 25%;
+}
+
+#tile14 {
+  margin-top: 3%;
+  position: absolute;
+  top: 238%;
+  left: 15%;
+}
+#tile13 {
+  margin-top: 3%;
+  position: absolute;
+  top: 229%;
+  left: 5%;
+}
+
+#tile12 {
+  margin-top: 3%;
+  position: absolute;
+  top: 236%;
+  right: 39%;
+}
+
+#tile11 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 245%;
+}
+
+#tile11:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile10 {
+  margin-top: 3%;
+  position: absolute;
+  top: 236%;
+  left: 39%;
+}
+
+#tile9 {
+  margin-top: 3%;
+  position: absolute;
+  top: 271%;
+  right: 5%;
+}
+
+#tile8 {
+  margin-top: 3%;
+  position: absolute;
+  top: 262%;
+  right: 15%;
+}
+#tile7 {
+  margin-top: 3%;
+  position: absolute;
+  top: 271%;
+  right: 25%;
+}
+
+#tile6 {
+  margin-top: 3%;
+  position: absolute;
+  top: 271%;
+  left: 25%;
+}
+
+#tile5 {
+  margin-top: 3%;
+  position: absolute;
+  top: 262%;
+  left: 15%;
+}
+#tile4 {
+  margin-top: 3%;
+  position: absolute;
+  top: 271%;
+  left: 5%;
+}
+
+#tile3 {
+  margin-top: 3%;
+  position: absolute;
+  top: 278%;
+  right: 39%;
+}
+
+#tile2 {
+  margin-top: 3%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 269%;
+}
+
+#tile2:hover {
+  transform: translate(-50%) scale(1.1);
+}
+
+#tile1 {
+  margin-top: 3%;
+  position: absolute;
+  top: 278%;
+  left: 39%;
+}

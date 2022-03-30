@@ -20,3 +20,8 @@ code {
   font-family: "EvilEmpire";
   src: url("./fonts/EvilEmpire.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "MavenPro";
+  src: url("./fonts/MavenPro-Medium.ttf") format("truetype");
+}
