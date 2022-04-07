@@ -25,3 +25,8 @@ code {
   font-family: "MavenPro";
   src: url("./fonts/MavenPro-Medium.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "DidactGothic-Regular";
+  src: url("./fonts/DidactGothic-Regular.ttf") format("truetype");
+}

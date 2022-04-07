@@ -1,13 +1,16 @@
-import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "../styles/Navbar.css";
 
 const Navbar = ({ sidebarState, setSidebarState }) => {
-  const showSidebar = () => setSidebarState(!sidebarState);
   const [navbarState, setNavbarState] = useState(true);
 
+  // When clicked, open or close sidebar
+  const showSidebar = () => setSidebarState(!sidebarState);
+
+  // When scrolled past 4 pixels, don't show navbar and sidebar
   const controlNavbar = () => {
-    if (window.scrollY > 5) {
+    if (window.scrollY > 4) {
       setNavbarState(false);
       setSidebarState(false);
     } else {

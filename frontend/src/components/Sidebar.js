@@ -1,8 +1,9 @@
-import "../styles/Sidebar.css";
 import { Link } from "react-router-dom";
+import "../styles/Sidebar.css";
 
 const Sidebar = ({setSidebarState }) => {
 
+  // Don't show sidebar when link is clicked
   const showSidebar = () => setSidebarState(false)
 
   return (

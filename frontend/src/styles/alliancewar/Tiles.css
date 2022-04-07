@@ -3,17 +3,14 @@
   font-family: "MavenPro";
   font-weight: 1000;
   color: #555555;
-  background-color: rgba(38, 41, 42, 255);
-  border: solid;
-  border-width: 3px;
-  border-color: #555b66;
-  box-shadow: 0 2px 10px #ff5f1f;
-  width: 50px;
-  height: 45px;
+  background-color: rgb(27, 27, 27);
+  width: 46px;
+  height: 41px;
+  position: relative;
 }
 
 .tile:hover {
-  transform: scale(1.1);
+  transform: scale(1.06);
 }
 
 #tile55 {
@@ -45,7 +42,7 @@
 }
 
 #tile52:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile51 {
@@ -70,7 +67,7 @@
 }
 
 #tile49:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile48 {
@@ -142,7 +139,7 @@
 }
 
 #tile39:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 /* Fill in 38-36 */
@@ -155,11 +152,11 @@
 #tile37 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%); 
+  transform: translate(-50%);
   top: 115%;
 }
 #tile37:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile36 {
@@ -217,7 +214,7 @@
 }
 
 #tile29:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 #tile28 {
   margin-top: 3%;
@@ -248,7 +245,7 @@
 }
 
 #tile25:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile24 {
@@ -265,7 +262,7 @@
 }
 
 #tile23:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile22 {
@@ -276,7 +273,7 @@
 }
 
 #tile22:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile21 {
@@ -301,7 +298,7 @@
 }
 
 #tile19:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile18 {
@@ -359,7 +356,7 @@
 }
 
 #tile11:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile10 {
@@ -424,7 +421,7 @@
 }
 
 #tile2:hover {
-  transform: translate(-50%) scale(1.1);
+  transform: translate(-50%) scale(1.06);
 }
 
 #tile1 {

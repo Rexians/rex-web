@@ -1,0 +1,22 @@
+.normalnode {
+  font-family: "DidactGothic-Regular";
+  top: 76px;
+  width: 20%;
+  height: 100%;
+  background-color: #322f32;
+  position: fixed;
+  overflow-x: hidden;
+  left: 0;
+}
+
+.expandednode {
+  font-family: "DidactGothic-Regular";
+  top: 0;
+  padding-top: 10px;
+  width: 20%;
+  height: 100%;
+  background-color: #322f32;
+  position: fixed;
+  overflow-x: hidden;
+  left: 0;
+}
