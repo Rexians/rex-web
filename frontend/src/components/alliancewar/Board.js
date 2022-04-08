@@ -4,11 +4,12 @@ import NodeSidebar from "./NodeSidebar";
 import "../../styles/alliancewar/Board.css";
 
 const Board = () => {
-
   // States for nodes
-  const [nodeInfoState, showNodeInfo] = useState(false);
+  const [nodeInfoState, setNodeInfo] = useState({
+    show: false,
+    expanded: false,
+  });
   const [nodeNumber, setNodeNumber] = useState(0);
-
 
   // The war board with all the tiles and canvas
   const canvasRef = useRef(null);
@@ -107,11 +108,17 @@ const Board = () => {
       </div>
       <Tiles
         nodeInfoState={nodeInfoState}
-        showNodeInfo={showNodeInfo}
+        setNodeInfo={setNodeInfo}
         nodeNumber={nodeNumber}
         setNodeNumber={setNodeNumber}
       />
-      {nodeInfoState && <NodeSidebar nodeNumber={nodeNumber} />}
+      {nodeInfoState["show"] && (
+        <NodeSidebar
+          nodeInfoState={nodeInfoState}
+          setNodeInfo={setNodeInfo}
+          nodeNumber={nodeNumber}
+        />
+      )}
     </div>
   );
 };

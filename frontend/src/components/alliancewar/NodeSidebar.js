@@ -1,17 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "../../styles/alliancewar/NodeSidebar.css";
 
-const NodeSidebar = ({ nodeNumber }) => {
-  // State for sidebar when scrolling
-  const [expanded, setExpanded] = useState(false);
-
+const NodeSidebar = ({ nodeInfoState, setNodeInfo, nodeNumber }) => {
   // If scroll is more than 4 pixels, expand sidebar to fill removed navbar
   const expand = function () {
     if (window.scrollY > 4) {
-      console.log(window.scrollY);
-      setExpanded(true);
+      setNodeInfo({ show: true, expanded: true });
     } else {
-      setExpanded(false);
+      setNodeInfo({ show: true, expanded: false });
     }
   };
 
@@ -23,7 +19,9 @@ const NodeSidebar = ({ nodeNumber }) => {
   }, []);
 
   return (
-    <div className={expanded ? "expandednode" : "normalnode"}>{nodeNumber}</div>
+    <div className={nodeInfoState["expanded"] ? "expandednode" : "normalnode"}>
+      {nodeNumber}
+    </div>
   );
 };
 
