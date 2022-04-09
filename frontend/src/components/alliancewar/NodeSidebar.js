@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect } from "react";  
+import Nodes from "./Nodes";
 import "../../styles/alliancewar/NodeSidebar.css";
 
 const NodeSidebar = ({ nodeInfoState, setNodeInfo, nodeNumber }) => {
@@ -20,7 +21,13 @@ const NodeSidebar = ({ nodeInfoState, setNodeInfo, nodeNumber }) => {
 
   return (
     <div className={nodeInfoState["expanded"] ? "expandednode" : "normalnode"}>
-      {nodeNumber}
+      <div className="nodetitle">TILE {nodeNumber}</div>
+      <hr className="divider"></hr>
+      <div className="nodetitle">LOCAL NODE</div>
+      <p className="nodeInfo">
+        Local Nodes apply a buff to the enemy on this tile.
+      </p>
+      <Nodes expanded={nodeInfoState["expanded"]} />
     </div>
   );
 };

@@ -37,12 +37,8 @@
 #tile52 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 20%;
-}
-
-#tile52:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile51 {
@@ -62,12 +58,8 @@
 #tile49 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 47%;
-}
-
-#tile49:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile48 {
@@ -134,12 +126,8 @@
 #tile39 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 90%;
-}
-
-#tile39:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 /* Fill in 38-36 */
@@ -152,11 +140,8 @@
 #tile37 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 115%;
-}
-#tile37:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile36 {
@@ -209,13 +194,10 @@
 #tile29 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 139%;
 }
 
-#tile29:hover {
-  transform: translate(-50%) scale(1.06);
-}
 #tile28 {
   margin-top: 3%;
   position: absolute;
@@ -240,12 +222,8 @@
 #tile25 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 163%;
-}
-
-#tile25:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile24 {
@@ -257,23 +235,15 @@
 #tile23 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 181%;
-}
-
-#tile23:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile22 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 199%;
-}
-
-#tile22:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile21 {
@@ -293,12 +263,8 @@
 #tile19 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 220%;
-}
-
-#tile19:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile18 {
@@ -351,12 +317,8 @@
 #tile11 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 245%;
-}
-
-#tile11:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile10 {
@@ -416,12 +378,8 @@
 #tile2 {
   margin-top: 3%;
   position: absolute;
-  transform: translate(-50%);
+  left: 48.25%;
   top: 269%;
-}
-
-#tile2:hover {
-  transform: translate(-50%) scale(1.06);
 }
 
 #tile1 {

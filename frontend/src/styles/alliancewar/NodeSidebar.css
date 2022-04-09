@@ -5,7 +5,7 @@
   height: 100%;
   background-color: #322f32;
   position: fixed;
-  overflow-x: hidden;
+  overflow: hidden;
   left: 0;
 }
 
@@ -17,6 +17,106 @@
   height: 100%;
   background-color: #322f32;
   position: fixed;
-  overflow-x: hidden;
+  overflow: hidden;
   left: 0;
+}
+
+.nodetitle {
+  font-family: "DidactGothic-Regular";
+  font-size: 18px;
+  color: #c0bdc0;
+  text-align: left;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.divider {
+  color: #c0bdc0;
+  background-color: #c0bdc0;
+  border-color: #c0bdc0;
+  height: 0.1;
+  width: 90%;
+}
+
+.nodeInfo {
+  font-family: "DidactGothic-Regular";
+  font-size: 14px;
+  color: #c0bdc0;
+  text-align: left;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.fullnodecontainer {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.nodescontainer {
+  margin: auto;
+  overflow: auto;
+  width: 90%;
+  height: 63%;
+  background-color: #213d4e;
+}
+
+.nodescontainerexpanded {
+  margin: auto;
+  overflow: auto;
+  width: 90%;
+  height: 74%;
+  background-color: #213d4e;
+}
+
+.nodescontainer::-webkit-scrollbar {
+  display: none;
+}
+
+.nodescontainerexpanded::-webkit-scrollbar {
+  display: none;
+}
+
+.node {
+  margin: 2%;
+  padding-left: 5px;
+  background-color: #363437;
+  border-radius: 4px;
+  border: 2px solid #172127;
+  overflow-x: hidden;
+}
+
+.nodeheader {
+  margin-top: -5%;
+  height: 50px;
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nodedivider {
+  color: #c0bdc0;
+  background-color: #c0bdc0;
+  border-color: #c0bdc0;
+  height: 25%;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.nodename {
+  word-break: normal;
+  font-size: 15.5px;
+  text-align: center;
+  color: #fefefe;
+}
+
+.nodeinfo {
+  margin-top: -5%;
+  word-break: normal;
+  font-size: 15px;
+  color: #908d8f;
+}
+
+.nodeicon {
+  color: #d95d21;
 }
