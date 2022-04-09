@@ -1,4 +1,6 @@
-import { useEffect } from "react";  
+import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import Nodes from "./Nodes";
 import "../../styles/alliancewar/NodeSidebar.css";
 
@@ -21,7 +23,14 @@ const NodeSidebar = ({ nodeInfoState, setNodeInfo, nodeNumber }) => {
 
   return (
     <div className={nodeInfoState["expanded"] ? "expandednode" : "normalnode"}>
-      <div className="nodetitle">TILE {nodeNumber}</div>
+      <div className="sidebarheader">
+        <div className="nodetitle">TILE {nodeNumber}</div>
+        <FontAwesomeIcon
+          className="closeicon"
+          icon={faCircleXmark}
+          onClick={() => setNodeInfo(false)}
+        ></FontAwesomeIcon>
+      </div>
       <hr className="divider"></hr>
       <div className="nodetitle">LOCAL NODE</div>
       <p className="nodeInfo">
