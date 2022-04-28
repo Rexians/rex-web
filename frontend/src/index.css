@@ -30,3 +30,8 @@ code {
   font-family: "DidactGothic-Regular";
   src: url("./fonts/DidactGothic-Regular.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "boson03";
+  src: url("./fonts/bosun03.ttf") format("truetype");
+}

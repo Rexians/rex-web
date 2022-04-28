@@ -1,8 +1,8 @@
 import "../../styles/alliancewar/Tiles.css";
 
-const Tiles = ({ nodeInfoState, setNodeInfo, nodeNumber, setNodeNumber }) => {
+const Tiles = ({ nodeInfoState, setNodeInfo, tileNumber, setTileNumber }) => {
   const show = function (e) {
-    var tileNumber = parseInt(e.currentTarget.innerHTML);
+    var clickedTileNumber = parseInt(e.currentTarget.innerHTML);
     var top = window.pageYOffset || document.documentElement.scrollTop;
     var expand = false;
 
@@ -14,14 +14,14 @@ const Tiles = ({ nodeInfoState, setNodeInfo, nodeNumber, setNodeNumber }) => {
     } else {
       expand = false;
     }
-    if (nodeNumber === 0) {
+    if (tileNumber === 0) {
       setNodeInfo({ show: true, expanded: expand });
-    } else if (tileNumber === nodeNumber) {
+    } else if (clickedTileNumber === tileNumber) {
       setNodeInfo({ show: !nodeInfoState["show"], expanded: expand });
     } else {
       setNodeInfo({ show: true, expanded: expand });
     }
-    setNodeNumber(tileNumber);
+    setTileNumber(clickedTileNumber);
   };
 
   // Create the buttons

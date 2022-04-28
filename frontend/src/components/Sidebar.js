@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import "../styles/Sidebar.css";
 
-const Sidebar = ({setSidebarState }) => {
-
+const Sidebar = ({ setSidebarState }) => {
   // Don't show sidebar when link is clicked
-  const showSidebar = () => setSidebarState(false)
+  const showSidebar = () => setSidebarState(false);
 
   return (
     <div className="sidebar">
@@ -14,7 +13,7 @@ const Sidebar = ({setSidebarState }) => {
       <Link className="sidebaroptions" to="/alliance" onClick={showSidebar}>
         Alliance
       </Link>
-      <Link className="sidebaroptions" to="/war" onClick={showSidebar}>
+      <Link className="sidebaroptions" to="/war/1" onClick={showSidebar}>
         Alliance War
       </Link>
       <div className="sidebaroptions">Coming soon...</div>

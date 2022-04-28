@@ -22,7 +22,15 @@ function App() {
         />
         <Route
           path="/war"
-          exact
+          element={
+            <AllianceWar
+              sidebarState={sidebarState}
+              setSidebarState={setSidebarState}
+            />
+          }
+        />
+        <Route
+          path="/war/:tier"
           element={
             <AllianceWar
               sidebarState={sidebarState}

@@ -1,0 +1,87 @@
+.awheader {
+    text-align: center;
+    font-size: 150%;
+    margin-top: 2%;
+    font-family: "boson03";
+    color: #c0bdc0;
+  }
+  
+  .awdivider {
+    border-top: 1.4px solid #c0bdc0;
+    background-color: #c0bdc0;
+    width: 85%;
+  }
+  
+  .awstats {
+    color: #c0bdc0;
+    font-size: 110%;
+    margin-left: 4%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-family: "boson03";
+    display: flex;
+  }
+  
+  .tier {
+    color: #c0bdc0;
+    width: 100%;
+    text-align: right;
+    padding-right: 3%;
+    font-family: "boson03";
+    font-size: 90%;
+  }
+  
+  .difficulty {
+    color: #c0bdc0;
+    width: 100%;
+    text-align: right;
+    padding-right: 3%;
+    padding-top: 1%;
+    font-family: "boson03";
+    font-size: 80%;
+  }
+  
+  .tiermult {
+    color: #c0bdc0;
+    width: 48.8%;
+    text-align: right;
+    padding-right: 3%;
+    padding-top: 1%;
+    font-family: "boson03";
+    font-size: 80%;
+  }
+  
+  .tierrank {
+    color: #c0bdc0;
+    width: 65%;
+    text-align: right;
+    padding-right: 3%;
+    padding-top: 1%;
+    font-family: "boson03";
+    font-size: 80%;
+  }
+  
+  .tierselection {
+    width: 19%;
+    height: 50%;
+    border-radius: 25px;
+    margin-top: 2%;
+    border: 1.4px solid #146c6c;
+    background-color: #1a1a1a;
+    position: absolute;
+    overflow-x: hidden;
+    left: 5px;
+  }
+  
+  .tierbutton {
+    font-size: 110%;
+    border: 0.8px solid #146c6c;
+    background-color: #1a1a1a;
+    position: absolute;
+    overflow-x: hidden;
+    transform: translate(50%, 0%);
+    width: 50%;
+    height: 11%;
+    font-family: "boson03";
+    color: #c0bdc0;
+  }

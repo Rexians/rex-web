@@ -106,7 +106,6 @@
 .nodename {
   word-break: normal;
   font-size: 15.5px;
-  text-align: center;
   color: #fefefe;
 }
 
@@ -119,4 +118,13 @@
 
 .nodeicon {
   color: #d95d21;
+  left: 10px;
+}
+
+.closeicon {
+  font-size: 25px;
+  margin-top: 2%;
+  margin-left: 88%;
+  color: #727073;
+  position: absolute;
 }

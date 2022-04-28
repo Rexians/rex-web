@@ -4,7 +4,7 @@ import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import Nodes from "./Nodes";
 import "../../styles/alliancewar/NodeSidebar.css";
 
-const NodeSidebar = ({ nodeInfoState, setNodeInfo, nodeNumber }) => {
+const NodeSidebar = ({ nodeInfoState, setNodeInfo, tileNumber, nodes }) => {
   // If scroll is more than 4 pixels, expand sidebar to fill removed navbar
   const expand = function () {
     if (window.scrollY > 4) {
@@ -24,7 +24,7 @@ const NodeSidebar = ({ nodeInfoState, setNodeInfo, nodeNumber }) => {
   return (
     <div className={nodeInfoState["expanded"] ? "expandednode" : "normalnode"}>
       <div className="sidebarheader">
-        <div className="nodetitle">TILE {nodeNumber}</div>
+        <div className="nodetitle">TILE {tileNumber}</div>
         <FontAwesomeIcon
           className="closeicon"
           icon={faCircleXmark}
@@ -36,7 +36,7 @@ const NodeSidebar = ({ nodeInfoState, setNodeInfo, nodeNumber }) => {
       <p className="nodeInfo">
         Local Nodes apply a buff to the enemy on this tile.
       </p>
-      <Nodes expanded={nodeInfoState["expanded"]} />
+      <Nodes expanded={nodeInfoState["expanded"]} tileNumber={tileNumber} nodes={nodes} />
     </div>
   );
 };
