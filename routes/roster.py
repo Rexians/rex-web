@@ -25,14 +25,14 @@ def login():
 
 @roster.route('/oauth/callback/')
 def callback():
-    try:
-        code = request.args['code']
-        access_token = client.oauth.get_access_token(code, redirect_uri).access_token
-        session['token'] = access_token
-        return redirect('/oauth/callback/gamename/')
-    except Exception as e:
-        print(e)
-        return redirect('/login/')
+    #try:
+    code = request.args['code']
+    access_token = client.oauth.get_access_token(code, redirect_uri).access_token
+    session['token'] = access_token
+    return redirect('/oauth/callback/gamename/')
+    #except Exception as e:
+        #print(e)
+        #return redirect('/login/')
 
 @roster.route('/oauth/callback/gamename/', methods=['GET', 'POST'])
 def gamename(): 
