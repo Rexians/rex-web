@@ -14,18 +14,6 @@
   position: absolute;
 }
 
-.awinfo {
-  width: 19%;
-  height: 50%;
-  border-radius: 25px;
-  margin-top: 2%;
-  border: 1.4px solid #146c6c;
-  background-color: #1a1a1a;
-  position: absolute;
-  overflow-x: hidden;
-  left: 5px;
-}
-
 .canvas {
   position: absolute;
   display: block;

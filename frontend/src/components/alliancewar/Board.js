@@ -16,7 +16,7 @@ const Board = ({ tier }) => {
   const [warInfo, setWarInfo] = useState({});
   const [nodes, setNodes] = useState({});
 
-  // Get war info when page loads and set state
+  // Get war info when page loads and set state when tier changes
   const getWarInfo = async function () {
     var response = await warNodes(tier);
     var warInfo = {
@@ -32,7 +32,7 @@ const Board = ({ tier }) => {
 
   useEffect(() => {
     getWarInfo();
-  }, []);
+  }, [tier]);
 
   // Draw the board
   const canvasRef = useRef(null);

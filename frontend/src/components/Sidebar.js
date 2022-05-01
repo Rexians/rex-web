@@ -2,18 +2,27 @@ import { Link } from "react-router-dom";
 import "../styles/Sidebar.css";
 
 const Sidebar = ({ setSidebarState }) => {
-  // Don't show sidebar when link is clicked
-  const showSidebar = () => setSidebarState(false);
-
   return (
     <div className="sidebar">
-      <Link className="sidebaroptions" to="/roster" onClick={showSidebar}>
+      <Link
+        className="sidebaroptions"
+        to="/roster"
+        onClick={() => setSidebarState(false)}
+      >
         Roster
       </Link>
-      <Link className="sidebaroptions" to="/alliance" onClick={showSidebar}>
+      <Link
+        className="sidebaroptions"
+        to="/alliance"
+        onClick={() => setSidebarState(false)}
+      >
         Alliance
       </Link>
-      <Link className="sidebaroptions" to="/war/1" onClick={showSidebar}>
+      <Link
+        className="sidebaroptions"
+        to="/war/1"
+        onClick={() => setSidebarState(false)}
+      >
         Alliance War
       </Link>
       <div className="sidebaroptions">Coming soon...</div>
