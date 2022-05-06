@@ -2,8 +2,9 @@
   transition-timing-function: ease-in;
   transition: 0.5s;
   height: 70px;
-  text-align: center;
   position: fixed;
+  display: flex;
+  align-items: center;
   width: 100%;
   border-bottom: ridge;
   border-width: 6px;
@@ -16,16 +17,15 @@
   display: "flex";
   align-items: "center";
   justify-content: "center";
+  left: 50%;
   transform: translate(-50%);
   font-family: "EvilEmpire";
   font-size: 400%;
   color: whitesmoke;
-  position: fixed;
 }
 
 .sidebarbutton {
   position: fixed;
-  padding: 0;
   border: none;
   background: none;
   font-size: 40px;
@@ -35,6 +35,26 @@
   width: 40px;
   height: 40px;
   margin-right: 10px;
-  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.login {
+  position: fixed;
+  background-color: #1a1a1a;
+  margin-left: 1%;
+  font-family: "MavenPro";
+  align-items: center;
+  text-decoration: none;
+  font-size: 130%;
+  color: whitesmoke;
+}
+
+.discord {
+  left: 92%;
+  position: fixed;
+}
+
+.twitter {
+  left: 85%;
   position: fixed;
 }

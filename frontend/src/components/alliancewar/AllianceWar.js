@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Home from "../Home";
+import Navigation from "../Navigation";
 import Board from "./Board";
 
 const AllianceWar = () => {
@@ -12,7 +12,7 @@ const AllianceWar = () => {
   return (
     <div>
       <Board tier={tier} />
-      <Home />
+      <Navigation />
     </div>
   );
 };
