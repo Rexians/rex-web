@@ -1,12 +1,14 @@
-import { useState } from "react";
-import NavSideBar from "./Navigation";
+import Navigation from "./Navigation";
 import "../styles/Home.css";
 
 const Home = () => {
-
   return (
     <div className="homecontainer">
-      <NavSideBar />
+      {window.localStorage.getItem("logged") === "false" ? (
+        <Navigation />
+      ) : (
+        "None"
+      )}
     </div>
   );
 };
