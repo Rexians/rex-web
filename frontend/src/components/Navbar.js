@@ -30,7 +30,9 @@ const Navbar = ({ sidebarState, setSidebarState }) => {
     navbarState && (
       <div className="navbar">
         <Link to="/login" className="login">
-          Login
+          {window.localStorage.getItem("logged") === "false"
+            ? "Login"
+            : "Logout"}
         </Link>
         <Link to="/home" className="title">
           R E X I A N S

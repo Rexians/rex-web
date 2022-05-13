@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 import requests
 from flask import Blueprint, jsonify, session, redirect, request
+from flask_cors import cross_origin
 
 load_dotenv()
 
@@ -14,6 +15,7 @@ CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
 REDIRECT_URI = os.environ.get('REDIRECT_URI')
 
 @login.route('/oauth/callback/')
+@cross_origin(supports_credentials=True)
 def exchange_code():
     code = request.args['code']
     data = {
@@ -32,19 +34,17 @@ def exchange_code():
 
     access_token = r['access_token']
     session['token'] = access_token
-    print(access_token)
+    session.permanent = True
     print(session)
     return redirect('http://localhost:3000/auth')
 
 
 @login.route('/authenticated')
+@cross_origin(supports_credentials=True)
 def is_authenticated():
     print(session)
     if 'token' in session:
         response = jsonify({"logged":True})
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
     else:
         response = jsonify({"logged":False})
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
+    return response
