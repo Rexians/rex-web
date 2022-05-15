@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import React from "react";
 
 const Authentication = ({ setLogged }) => {
+  // Function to check if user is logged in. Set local storage based on that
+  // setLogged state to true or false if logged in or not. This will help re render the site
   const isAuth = async function () {
     const logged = (await auth())["logged"];
     if (logged) {
@@ -11,6 +13,7 @@ const Authentication = ({ setLogged }) => {
       setLogged(true);
     } else {
       window.localStorage.setItem("logged", "false");
+      setLogged(false);
     }
   };
 

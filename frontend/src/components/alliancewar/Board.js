@@ -3,7 +3,7 @@ import { warNodes } from "../../api/WarNodes";
 import Tiles from "./Tiles";
 import NodeSidebar from "./NodeSidebar";
 import TierForm from "./TierForm";
-import { drawBorders } from "../../helpers/drawBorders";
+import { drawBorders } from "../../helpers/DrawBorders";
 import "../../styles/alliancewar/Board.css";
 
 const Board = ({ tier }) => {

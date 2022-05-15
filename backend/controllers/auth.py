@@ -6,7 +6,7 @@ from flask_cors import cross_origin
 
 load_dotenv()
 
-login = Blueprint('Login', __name__)
+auth = Blueprint('Auth', __name__)
 
 API_ENDPOINT = 'https://discord.com/api/v9'     
 TOKEN = os.environ.get('TOKEN')
@@ -14,7 +14,7 @@ CLIENT_ID = os.environ.get('CLIENT_ID')
 CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
 REDIRECT_URI = os.environ.get('REDIRECT_URI')
 
-@login.route('/oauth/callback/')
+@auth.route('/oauth/callback')
 @cross_origin(supports_credentials=True)
 def exchange_code():
     code = request.args['code']
@@ -28,23 +28,29 @@ def exchange_code():
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
-    r = requests.post('%s/oauth2/token' % API_ENDPOINT, data=data, headers=headers)
+    r = requests.post(f"{API_ENDPOINT}/oauth2/token", data=data, headers=headers)
     r.raise_for_status()
     r = r.json()
 
     access_token = r['access_token']
     session['token'] = access_token
     session.permanent = True
-    print(session)
     return redirect('http://localhost:3000/auth')
 
 
-@login.route('/authenticated')
+@auth.route('/authenticated')
 @cross_origin(supports_credentials=True)
 def is_authenticated():
-    print(session)
     if 'token' in session:
         response = jsonify({"logged":True})
     else:
         response = jsonify({"logged":False})
     return response
+
+
+@auth.route('/logout', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def logout():
+    if request.method == 'POST':
+        session.clear()
+        return ('', 204)

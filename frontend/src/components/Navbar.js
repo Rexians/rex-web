@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { SocialIcon } from "react-social-icons";
+import useLogOut from "../helpers/UseLogout";
 import "../styles/Navbar.css";
 
 const Navbar = ({ sidebarState, setSidebarState }) => {
@@ -8,6 +9,8 @@ const Navbar = ({ sidebarState, setSidebarState }) => {
 
   // When clicked, open or close sidebar
   const showSidebar = () => setSidebarState(!sidebarState);
+  // When clicked, logout user
+  const { logoutUser } = useLogOut();
 
   // When scrolled past 4 pixels, don't show navbar and sidebar
   const controlNavbar = () => {
@@ -29,11 +32,15 @@ const Navbar = ({ sidebarState, setSidebarState }) => {
   return (
     navbarState && (
       <div className="navbar">
-        <Link to="/login" className="login">
-          {window.localStorage.getItem("logged") === "false"
-            ? "Login"
-            : "Logout"}
-        </Link>
+        {window.localStorage.getItem("logged") === "false" ? (
+          <Link to="/login" className="login">
+            Login
+          </Link>
+        ) : (
+          <div className="login" onClick={() => logoutUser()}>
+            Logout
+          </div>
+        )}
         <Link to="/home" className="title">
           R E X I A N S
         </Link>
