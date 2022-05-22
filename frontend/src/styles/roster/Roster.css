@@ -1,0 +1,91 @@
+/* -----ROSTER----- */
+
+.roster-container {
+  position: absolute;
+  margin-top: 6.2%;
+  width: 100%;
+  height: 80%;
+  color: white;
+}
+
+.roster-title {
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-50%);
+  font-family: "boson03";
+  font-size: 200%;
+  color: #c0bdc0;
+}
+
+.roster-prestige {
+  width: 180px;
+  padding-left: 4%;
+  margin-top: 1%;
+  font-family: "boson03";
+  font-size: 110%;
+  color: #c0bdc0;
+  display: inline-block;
+}
+
+.roster-champ {
+  width: 160px;
+  display: inline-block;
+  font-family: "boson03";
+  font-size: 110%;
+  color: #c0bdc0;
+  left: 0;
+}
+
+/* -----ROSTER HEADER----- */
+
+.hr-left {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid #c26731;
+  width: 46%;
+  display: inline-block;
+}
+
+.hr-right {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid #c26731;
+  margin-left: 8.5%;
+  width: 45.5%;
+  display: inline-block;
+}
+
+/* -----ROSTER ICONS----- */
+
+.add-icon {
+  top: 20%;
+  transform: translate(0, 12%);
+  margin-left: 58%;
+  width: 50px;
+  font-size: 186%;
+  color: #c0bdc0;
+  display: inline-block;
+}
+
+.add-icon:hover {
+  font-size: 200%;
+}
+
+.delete-icon {
+  margin-left: 2%;
+  transform: translate(0, 6%);
+  font-size: 170%;
+  color: #c0bdc0;
+  display: inline-block;
+}
+
+.delete-icon:hover {
+  font-size: 180%;
+}
+
+img {
+  margin: 1%;
+  width: 150px;
+}

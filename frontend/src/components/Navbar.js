@@ -33,11 +33,11 @@ const Navbar = ({ sidebarState, setSidebarState }) => {
     navbarState && (
       <div className="navbar">
         {window.localStorage.getItem("logged") === "false" ? (
-          <Link to="/login" className="login">
+          <Link to="/login" className="auth">
             Login
           </Link>
         ) : (
-          <div className="login" onClick={() => logoutUser()}>
+          <div className="auth" onClick={() => logoutUser()}>
             Logout
           </div>
         )}

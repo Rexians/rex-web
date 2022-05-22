@@ -3,6 +3,7 @@ import { useState } from "react";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Authentication from "./components/Authentication";
+import Roster from "./components/roster/Roster";
 import AllianceWar from "./components/alliancewar/AllianceWar";
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
           path="/auth"
           element={<Authentication setLogged={setLogged} />}
         />
+        <Route path="/roster" element={<Roster />} />
         <Route exact path="/war" element={<AllianceWar />} />
         <Route path="/war/:tier" element={<AllianceWar />} />
       </Routes>

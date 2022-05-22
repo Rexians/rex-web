@@ -36,9 +36,10 @@
   height: 40px;
   margin-right: 10px;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
-.login {
+.auth {
   position: fixed;
   background-color: #1a1a1a;
   margin-left: 1%;
@@ -47,6 +48,7 @@
   text-decoration: none;
   font-size: 130%;
   color: whitesmoke;
+  cursor: pointer;
 }
 
 .discord {

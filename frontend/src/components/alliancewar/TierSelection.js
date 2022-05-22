@@ -29,6 +29,7 @@ const TierSelection = ({ switchTo }) => {
       if (i === 22) {
         rowButtons.push(
           <button
+            key={"close"}
             className="close"
             onClick={() => {
               switchTo(false);

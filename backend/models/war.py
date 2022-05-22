@@ -13,7 +13,7 @@ class War:
             self.war_info = requests.get(f"https://api.rexians.tk/war/{tier}").json()
             self.get_war_nodes()
         except:
-            print("API DOWN")
+            print("Error in request")
 
     def get_war_nodes(self):
         # Converts the node numbers to description of node
