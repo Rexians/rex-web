@@ -1,7 +1,9 @@
-.sidebar {
+/* ----- SIDEBAR ----- */
+
+.custom-sidebar {
   width: 15%;
   height: 100%;
-  margin-top: 6%;
+  margin-top: 5.5%;
   border-left: ridge;
   box-sizing: border-box;
   border-width: 4px;
@@ -12,7 +14,7 @@
   right: 0;
 }
 
-.sidebaroptions {
+.sidebar-options {
   text-align: center;
   display: flex;
   align-items: center;
@@ -25,7 +27,6 @@
   color: #c0bdc0;
 }
 
-.sidebarheader {
-  display: flex;
-  align-items: center;
+.sidebar-options:hover {
+  color: #c0bdc0;
 }

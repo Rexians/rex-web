@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Authentication from "./components/Authentication";
 import Roster from "./components/roster/Roster";
 import AllianceWar from "./components/alliancewar/AllianceWar";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 function App() {

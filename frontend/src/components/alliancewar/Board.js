@@ -48,7 +48,7 @@ const Board = ({ tier }) => {
 
   return (
     <div className="warboard">
-      <div className="canvasHolder">
+      <div>
         <TierForm warInfo={warInfo} />
         <canvas ref={canvasRef} id="canvas" width="1263.9" height="2000" />
       </div>

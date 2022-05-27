@@ -1,3 +1,5 @@
+/* ----- EACH TILE ----- */
+
 .tile {
   font-size: larger;
   font-family: "MavenPro";
@@ -7,6 +9,12 @@
   width: 46px;
   height: 41px;
   position: relative;
+}
+
+.tile,
+::after,
+::before {
+  box-sizing: border-box;
 }
 
 .tile:hover {

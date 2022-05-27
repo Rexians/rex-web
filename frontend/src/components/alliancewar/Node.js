@@ -4,12 +4,12 @@ import { faCircleDot } from "@fortawesome/free-regular-svg-icons";
 const Node = ({ nodeName, nodeInfo }) => {
   return (
     <div className="node">
-      <div className="nodeheader">
-        <FontAwesomeIcon icon={faCircleDot} className="nodeicon" />
-        <hr className="nodedivider"></hr>
-        <h3 className="nodename">{nodeName}</h3>
+      <div className="node-header">
+        <FontAwesomeIcon icon={faCircleDot} className="node-icon" />
+        <hr className="node-divider"></hr>
+        <h3 className="node-name">{nodeName}</h3>
       </div>
-      <p className="nodeinfo">{nodeInfo}</p>
+      <p className="node-description">{nodeInfo}</p>
     </div>
   );
 };

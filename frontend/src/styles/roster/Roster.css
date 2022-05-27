@@ -89,3 +89,13 @@ img {
   margin: 1%;
   width: 150px;
 }
+
+/* -----ADD CHAMP FORM----- */
+
+.add-champ {
+  margin-top: 10%;
+}
+
+.modal{
+  background-color: red;
+}

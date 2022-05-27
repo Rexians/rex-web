@@ -22,21 +22,27 @@ const NodeSidebar = ({ nodeInfoState, setNodeInfo, tileNumber, nodes }) => {
   }, []);
 
   return (
-    <div className={nodeInfoState["expanded"] ? "expandednode" : "normalnode"}>
-      <div className="sidebarheader">
-        <div className="nodetitle">TILE {tileNumber}</div>
+    <div
+      className={nodeInfoState["expanded"] ? "expanded-node" : "normal-node"}
+    >
+      <div>
+        <div className="node-title">TILE {tileNumber}</div>
         <FontAwesomeIcon
-          className="closeicon"
+          className="close-icon"
           icon={faCircleXmark}
           onClick={() => setNodeInfo(false)}
         ></FontAwesomeIcon>
       </div>
       <hr className="divider"></hr>
-      <div className="nodetitle">LOCAL NODE</div>
-      <p className="nodeInfo">
+      <div className="node-title">LOCAL NODE</div>
+      <p className="node-info">
         Local Nodes apply a buff to the enemy on this tile.
       </p>
-      <Nodes expanded={nodeInfoState["expanded"]} tileNumber={tileNumber} nodes={nodes} />
+      <Nodes
+        expanded={nodeInfoState["expanded"]}
+        tileNumber={tileNumber}
+        nodes={nodes}
+      />
     </div>
   );
 };

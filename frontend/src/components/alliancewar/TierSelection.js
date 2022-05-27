@@ -13,7 +13,7 @@ const TierSelection = ({ switchTo }) => {
       rowButtons.push(
         <Link key={i} to={`/war/${i}`}>
           <button
-            className="tierlink"
+            className="tier-link"
             onClick={() => {
               switchTo(false);
             }}
@@ -49,16 +49,16 @@ const TierSelection = ({ switchTo }) => {
   }, []);
 
   return (
-    <div className="tierselection">
-      <div className="awheader">Tier Selection</div>
-      <hr className="selectiondivider"></hr>
-      <div className="buttonscontainer">{buttons[0]}</div>
-      <div className="buttonscontainer">{buttons[1]}</div>
-      <div className="buttonscontainer">{buttons[2]}</div>
-      <div className="buttonscontainer">{buttons[3]}</div>
-      <div className="buttonscontainer">{buttons[4]}</div>
-      <div className="buttonscontainer">{buttons[5]}</div>
-      <hr className="selectiondivider"></hr>
+    <div className="tier-selection">
+      <div className="aw-header">Tier Selection</div>
+      <hr className="selection-divider"></hr>
+      <div className="buttons-container">{buttons[0]}</div>
+      <div className="buttons-container">{buttons[1]}</div>
+      <div className="buttons-container">{buttons[2]}</div>
+      <div className="buttons-container">{buttons[3]}</div>
+      <div className="buttons-container">{buttons[4]}</div>
+      <div className="buttons-container">{buttons[5]}</div>
+      <hr className="selection-divider"></hr>
     </div>
   );
 };

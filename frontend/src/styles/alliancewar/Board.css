@@ -1,17 +1,10 @@
+/* ----- ALLIANCE WAR BOARD ----- */
+
 .warboard {
   position: absolute;
   margin-top: 76px;
   width: 100%;
   height: 100%;
-}
-
-.canvas_holder {
-  overflow-y: hidden;
-  overflow-x: hidden;
-  width: 100%;
-  height: 100%;
-  display: block;
-  position: absolute;
 }
 
 .canvas {

@@ -1,31 +1,34 @@
-.awinfo {
+/* ----- ALLIANCE WAR INFO/STATS ----- */
+
+.aw-info {
   width: 19%;
-  height: 50%;
+  height: 55%;
   border-radius: 25px;
   margin-top: 2%;
   border: 1.4px solid #146c6c;
-  background-color: #1a1a1a;
   position: absolute;
   overflow-x: hidden;
   left: 0.8%;
 }
 
-.awheader {
+.aw-header {
   text-align: center;
   font-size: 150%;
   margin-top: 2%;
   font-family: "boson03";
-  color: #c0bdc0;
+  color: white;
 }
 
-.awdivider {
+.aw-divider {
   border-top: 1.4px solid #c0bdc0;
   background-color: #c0bdc0;
   width: 85%;
+  margin: auto;
+  margin-top: 10px;
 }
 
-.awstats {
-  color: #c0bdc0;
+.aw-stats {
+  color: white;
   font-size: 110%;
   margin-left: 4%;
   margin-top: 10%;
@@ -35,7 +38,6 @@
 }
 
 .tier {
-  color: #c0bdc0;
   width: 100%;
   text-align: right;
   padding-right: 3%;
@@ -44,7 +46,6 @@
 }
 
 .difficulty {
-  color: #c0bdc0;
   width: 100%;
   text-align: right;
   padding-right: 3%;
@@ -54,7 +55,6 @@
 }
 
 .tiermult {
-  color: #c0bdc0;
   width: 48.8%;
   text-align: right;
   padding-right: 3%;
@@ -64,7 +64,6 @@
 }
 
 .tierrank {
-  color: #c0bdc0;
   width: 65%;
   text-align: right;
   padding-right: 3%;
@@ -73,20 +72,28 @@
   font-size: 80%;
 }
 
-.tierbutton {
+.tier-button {
   font-size: 110%;
   border: 0.8px solid #146c6c;
   background-color: #1a1a1a;
   position: absolute;
-  overflow-x: hidden;
-  transform: translate(50%, 0%);
+  overflow: hidden;
+  transform: translate(50%, -20%);
   width: 50%;
   height: 11%;
   font-family: "boson03";
   color: #c0bdc0;
 }
 
-.tierselection {
+.tier-button,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+/* ----- TIER SELECTION FORM ----- */
+
+.tier-selection {
   width: 19%;
   height: 60%;
   border-radius: 25px;
@@ -98,7 +105,7 @@
   left: 0.7%;
 }
 
-.selectionheader {
+.selection-header {
   text-align: center;
   font-size: 150%;
   margin-top: 2%;
@@ -106,19 +113,21 @@
   color: #c0bdc0;
 }
 
-.selectiondivider {
+.selection-divider {
   border-top: 1.4px solid #c0bdc0;
   background-color: #c0bdc0;
   width: 85%;
+  margin: auto;
+  margin-top: 10px;
 }
 
-.buttonscontainer {
+.buttons-container {
   width: 100%;
   height: 13%;
   display: inline-block;
 }
 
-.tierlink {
+.tier-link {
   width: 25%;
   height: 100%;
   font-size: 110%;

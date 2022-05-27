@@ -1,6 +1,8 @@
-.normalnode {
+/* ----- NODE SIDEBAR ----- */
+
+.normal-node {
   font-family: "DidactGothic-Regular";
-  top: 76px;
+  top: 69px;
   width: 20%;
   height: 100%;
   background-color: #322f32;
@@ -9,10 +11,9 @@
   left: 0;
 }
 
-.expandednode {
+.expanded-node {
   font-family: "DidactGothic-Regular";
   top: 0;
-  padding-top: 10px;
   width: 20%;
   height: 100%;
   background-color: #322f32;
@@ -21,7 +22,9 @@
   left: 0;
 }
 
-.nodetitle {
+/* ----- INSIDE NODE SIDEBAR ----- */
+
+.node-title {
   font-family: "DidactGothic-Regular";
   font-size: 18px;
   color: #c0bdc0;
@@ -34,11 +37,12 @@
   color: #c0bdc0;
   background-color: #c0bdc0;
   border-color: #c0bdc0;
-  height: 0.1;
   width: 90%;
+  margin: auto;
+  margin-top: 10px;
 }
 
-.nodeInfo {
+.node-info {
   font-family: "DidactGothic-Regular";
   font-size: 14px;
   color: #c0bdc0;
@@ -47,13 +51,13 @@
   margin-top: 10px;
 }
 
-.fullnodecontainer {
+.full-node-container {
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
 
-.nodescontainer {
+.nodes-container {
   margin: auto;
   overflow: auto;
   width: 90%;
@@ -61,7 +65,7 @@
   background-color: #213d4e;
 }
 
-.nodescontainerexpanded {
+.nodes-container-expanded {
   margin: auto;
   overflow: auto;
   width: 90%;
@@ -69,16 +73,19 @@
   background-color: #213d4e;
 }
 
-.nodescontainer::-webkit-scrollbar {
+.nodes-container::-webkit-scrollbar {
   display: none;
 }
 
-.nodescontainerexpanded::-webkit-scrollbar {
+.nodes-container-expanded::-webkit-scrollbar {
   display: none;
 }
+
+/* ----- INDIVIDUAL NODES ----- */
 
 .node {
   margin: 2%;
+  padding-top: 5px;
   padding-left: 5px;
   background-color: #363437;
   border-radius: 4px;
@@ -86,7 +93,7 @@
   overflow-x: hidden;
 }
 
-.nodeheader {
+.node-header {
   margin-top: -5%;
   height: 50px;
   padding-top: 0;
@@ -94,37 +101,41 @@
   align-items: center;
 }
 
-.nodedivider {
+.node-divider {
   color: #c0bdc0;
   background-color: #c0bdc0;
   border-color: #c0bdc0;
-  height: 25%;
+  height: 37% !important;
+  width: 1px;
   margin-left: 6px;
   margin-right: 6px;
 }
 
-.nodename {
+.node-name {
+  padding-top: 7px;
   word-break: normal;
   font-size: 15.5px;
   color: #fefefe;
 }
 
-.nodeinfo {
+.node-description {
   margin-top: -5%;
   word-break: normal;
   font-size: 15px;
   color: #908d8f;
 }
 
-.nodeicon {
+/* ----- NODE ICONS ----- */
+
+.node-icon {
   color: #d95d21;
   left: 10px;
 }
 
-.closeicon {
+.close-icon {
   font-size: 25px;
-  margin-top: 2%;
   margin-left: 88%;
+  transform: translate(0, -100%);
   color: #727073;
   position: absolute;
 }

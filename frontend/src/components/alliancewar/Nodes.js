@@ -26,8 +26,8 @@ const Nodes = ({ expanded, tileNumber, nodes }) => {
   }, [tileNumber]);
 
   return (
-    <div className="fullnodecontainer">
-      <div className={expanded ? "nodescontainerexpanded" : "nodescontainer"}>
+    <div className="full-node-container">
+      <div className={expanded ? "nodes-container-expanded" : "nodes-container"}>
         {nodesOnTile}
       </div>
     </div>

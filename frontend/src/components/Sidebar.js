@@ -3,29 +3,29 @@ import "../styles/Sidebar.css";
 
 const Sidebar = ({ setSidebarState }) => {
   return (
-    <div className="sidebar">
+    <div className="custom-sidebar">
       <Link
-        className="sidebaroptions"
+        className="sidebar-options"
         to="/roster"
         onClick={() => setSidebarState(false)}
       >
         Roster
       </Link>
       <Link
-        className="sidebaroptions"
+        className="sidebar-options"
         to="/alliance"
         onClick={() => setSidebarState(false)}
       >
         Alliance
       </Link>
       <Link
-        className="sidebaroptions"
+        className="sidebar-options"
         to="/war/1"
         onClick={() => setSidebarState(false)}
       >
         Alliance War
       </Link>
-      <div className="sidebaroptions">Coming soon...</div>
+      <div className="sidebar-options">Coming soon...</div>
     </div>
   );
 };

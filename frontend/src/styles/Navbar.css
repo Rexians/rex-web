@@ -1,4 +1,6 @@
-.navbar {
+/* ----- NAVBAR ----- */
+
+.custom-navbar {
   transition-timing-function: ease-in;
   transition: 0.5s;
   height: 70px;
@@ -11,7 +13,7 @@
   border-color: #333333;
 }
 
-.title {
+.home-title {
   text-decoration: none;
   position: fixed;
   display: "flex";
@@ -24,7 +26,13 @@
   color: whitesmoke;
 }
 
-.sidebarbutton {
+.home-title:hover {
+  color: whitesmoke;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sidebar-button {
   position: fixed;
   border: none;
   background: none;
@@ -32,12 +40,14 @@
   color: white;
   background-color: #1a1a1a;
   right: 0;
-  width: 40px;
-  height: 40px;
+  height: 10%;
+  top: -5px;
   margin-right: 10px;
   margin-bottom: 8px;
   cursor: pointer;
 }
+
+/* ----- LOGIN BUTTON ----- */
 
 .auth {
   position: fixed;
@@ -50,6 +60,12 @@
   color: whitesmoke;
   cursor: pointer;
 }
+
+.auth:hover {
+  color: whitesmoke;
+}
+
+/* ----- ICONS ----- */
 
 .discord {
   left: 92%;

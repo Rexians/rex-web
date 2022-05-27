@@ -31,7 +31,7 @@ const Navbar = ({ sidebarState, setSidebarState }) => {
 
   return (
     navbarState && (
-      <div className="navbar">
+      <div className="custom-navbar">
         {window.localStorage.getItem("logged") === "false" ? (
           <Link to="/login" className="auth">
             Login
@@ -41,7 +41,7 @@ const Navbar = ({ sidebarState, setSidebarState }) => {
             Logout
           </div>
         )}
-        <Link to="/home" className="title">
+        <Link to="/home" className="home-title ">
           R E X I A N S
         </Link>
         <SocialIcon
@@ -56,7 +56,7 @@ const Navbar = ({ sidebarState, setSidebarState }) => {
           url="https://twitter.com/TheRexians"
           style={{ height: 35, width: 35 }}
         ></SocialIcon>
-        <button className="sidebarbutton" onClick={showSidebar}>
+        <button className="sidebar-button" onClick={showSidebar}>
           &#8801;
         </button>
       </div>
