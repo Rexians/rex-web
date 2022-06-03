@@ -5,21 +5,24 @@
   margin-top: 6.2%;
   width: 100%;
   height: 80%;
-  color: white;
+  color: #1a1a1a;
+  background-color: #1a1a1a;
 }
 
-.roster-title {
+#roster-title.roster-title {
   position: absolute;
+  padding-top: 0px;
   margin-left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -10%);
   font-family: "boson03";
   font-size: 200%;
   color: #c0bdc0;
 }
 
 .roster-prestige {
+  transform: translate(-30%);
+
   width: 180px;
-  padding-left: 4%;
   margin-top: 1%;
   font-family: "boson03";
   font-size: 110%;
@@ -60,10 +63,10 @@
 /* -----ROSTER ICONS----- */
 
 .add-icon {
-  top: 20%;
-  transform: translate(0, 12%);
-  margin-left: 58%;
   width: 50px;
+  top: 20%;
+  transform: translate(100%, 12%);
+  margin-left: 60%;
   font-size: 186%;
   color: #c0bdc0;
   display: inline-block;
@@ -74,8 +77,8 @@
 }
 
 .delete-icon {
-  margin-left: 2%;
-  transform: translate(0, 6%);
+  padding-left: 2%;
+  transform: translate(130%, 6%);
   font-size: 170%;
   color: #c0bdc0;
   display: inline-block;
@@ -87,15 +90,21 @@
 
 img {
   margin: 1%;
-  width: 150px;
+  width: 100px;
+  position: relative;
 }
 
 /* -----ADD CHAMP FORM----- */
 
 .add-champ {
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
-.modal{
-  background-color: red;
+.special_modal .modal-content {
+  background-color: #322f32;
+  color: #c0bdc0;
+}
+
+.select-option {
+  color: black;
 }

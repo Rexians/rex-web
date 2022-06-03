@@ -25,3 +25,7 @@ hr {
   opacity: 1;
   color: inherit;
 }
+
+body {
+  background-color: transparent;
+}

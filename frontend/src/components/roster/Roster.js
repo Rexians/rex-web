@@ -2,12 +2,16 @@ import { useState } from "react";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faPlusSquare } from "@fortawesome/free-regular-svg-icons";
+import AddChamp from "./AddChamp";
 import Navigation from "../Navigation";
 import abomination from "../../assets/champs/abomination.png";
-import "../../styles/roster/Roster.css";
+import "../../styles/Roster.css";
 
 const Roster = () => {
-  const [prestige, setPrestige] = useState(0);
+  // Add champ state
+  const [isOpen, setIsOpen] = useState(false);
+
+  const [prestige, setPrestige] = useState(20000);
   const [champs, setChamps] = useState(0);
   return (
     <div>
@@ -18,6 +22,7 @@ const Roster = () => {
           <FontAwesomeIcon
             title="Add"
             className="add-icon"
+            onClick={() => setIsOpen(true)}
             icon={faPlusSquare}
           ></FontAwesomeIcon>
           <FontAwesomeIcon
@@ -26,33 +31,13 @@ const Roster = () => {
             icon={faTrashCan}
           ></FontAwesomeIcon>
         </Container>
-        <Navbar.Brand className="roster-title">Roster</Navbar.Brand>
-        <Container>
-          <hr className="hr-left"></hr>
-          <hr className="hr-right"></hr>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-          <img src={abomination} alt="Abom"></img>
-        </Container>
+        <Navbar.Brand id="roster-title" className="roster-title">
+          Roster
+        </Navbar.Brand>
+        <hr className="hr-left"></hr>
+        <hr className="hr-right"></hr>
+        {isOpen ? <AddChamp setIsOpen={setIsOpen} /> : null}
+        <img src={abomination} alt="Abom"></img>
       </div>
       <Navigation />
     </div>
