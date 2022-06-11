@@ -8,15 +8,19 @@ class War:
         self.error = None
 
     def get_war_info(self, tier):
-        # Makes request to API for war info
+        """
+        Makes request to API for war info
+        """
         try:
-            self.war_info = requests.get(f"https://api.rexians.tk/war/{tier}").json()
+            self.war_info = requests.get(f"http://127.0.0.1:8000/war/{tier}").json()
             self.get_war_nodes()
         except:
             print("Error in request")
 
     def get_war_nodes(self):
-        # Converts the node numbers to description of node
+        """
+        Converts the node numbers to description of node
+        """
         with open("files/nodes.json", 'r') as file:
             all_nodes = json.load(file)
 
