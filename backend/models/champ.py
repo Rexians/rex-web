@@ -9,6 +9,7 @@ class Champ:
     tier: int
     rank: int
     prestige: int
+    champ_img: str
 
     def create_champ(self) -> dict:
         return {"champ_id": self.champ_id,
@@ -16,4 +17,5 @@ class Champ:
                 "champ_class": self.champ_class,
                 "tier": self.tier,
                 "rank": self.rank,
-                "prestige": self.prestige}
+                "prestige": self.prestige,
+                "champ_img": self.champ_img}

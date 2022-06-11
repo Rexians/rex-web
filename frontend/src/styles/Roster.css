@@ -1,5 +1,15 @@
 /* -----ROSTER----- */
 
+.roster-login-message {
+  position: fixed;
+  margin-top: 10%;
+  margin-left: 50%;
+  transform: translate(-50%);
+  font-family: "boson03";
+  font-size: 200%;
+  color: #c0bdc0;
+}
+
 .roster-container {
   position: absolute;
   margin-top: 6.2%;

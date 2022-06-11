@@ -7,7 +7,6 @@ const Authentication = ({ setLogged }) => {
   // setLogged state to true or false if logged in or not. This will help re render the site
   const isAuth = async function () {
     const logged = (await auth())["logged"];
-    console.log(logged);
     if (logged) {
       window.localStorage.setItem("logged", "true");
       setLogged(true);

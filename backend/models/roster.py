@@ -16,7 +16,7 @@ class Roster(User):
         roster = {"champs": self.champs, 
                 "total_prestige": self.total_prestige, 
                 "total_champs": self.total_champs}
-        self.users_collection.update_one({"user_id": self.user_id}, {'$set': {"roster": roster}})
+        self.users_collection.update_one({'user_id': self.user_id}, {'$set': {'roster': roster}})
 
 
     def add_champ(self, champ: dict):
@@ -26,4 +26,19 @@ class Roster(User):
         Args:
             champ (dict): Dictionary of the champion
         """
-        self.users_collection.update_one({"user_id": self.user_id}, {'$push': {"roster.champs": champ}})
+        self.users_collection.update_one({'user_id': self.user_id}, {'$push': {'roster.champs': champ}})
+
+        
+    def get_champs_imgs(self):
+        """
+        Gets all users champs images to display in roster
+
+        Returns:
+            None: If user has no champs
+            champ_imgs (list): List of all champ images
+        """
+        user_roster = self.users_collection.find_one({"user_id": self.user_id}, {"roster": 1, "_id": 0})
+        if len(user_roster['roster']['champs']) == 0:
+            return None
+        champ_imgs = [champ['champ_img'] for champ in user_roster['roster']['champs']]
+        return champ_imgs

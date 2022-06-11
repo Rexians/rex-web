@@ -2,6 +2,7 @@ import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
 import Select from "react-select";
 import { champOptions, tierOptions, rankOptions } from "./Options";
+import { addChamp } from "../../api/Roster";
 import "../../styles/Roster.css";
 
 const AddChamp = ({ setIsOpen }) => {
@@ -56,6 +57,8 @@ const AddChamp = ({ setIsOpen }) => {
     } else {
       setIsOpen(false);
     }
+    
+    addChamp(champ["value"], tier["value"], rank["value"]);
   };
 
   return (
