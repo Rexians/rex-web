@@ -40,7 +40,8 @@ const Roster = () => {
     if (!onLoad) {
       setRosterPage();
     } else {
-      setChampsCount(champsCount + 1);
+      if(champsCount !== champImgs.length)
+        setChampsCount(champsCount + 1);
     }
   }, [champImgs]);
 

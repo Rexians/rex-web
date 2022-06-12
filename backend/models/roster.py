@@ -35,7 +35,7 @@ class Roster(User):
 
         Returns:
             None: If user has no champs
-            champ_imgs (list): List of all champ images
+            champ_imgs (list): List of string links to all champ images
         """
         user_roster = self.users_collection.find_one({"user_id": self.user_id}, {"roster": 1, "_id": 0})
         if len(user_roster['roster']['champs']) == 0:
@@ -44,6 +44,12 @@ class Roster(User):
         return champ_imgs
     
     def get_latest_champ_img(self):
+        """
+        Gets latest champ image
+
+        Returns:
+            champ_imgs (str): String of link to image
+        """
         user_roster = self.users_collection.find_one({"user_id": self.user_id}, {"roster": 1, "_id": 0})
         champ_img = user_roster['roster']['champs'][-1]['champ_img']
         return champ_img
