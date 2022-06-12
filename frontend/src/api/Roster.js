@@ -13,4 +13,15 @@ const getChamps = async function () {
   return responseData;
 };
 
-export { addChamp, getChamps };
+const getLatestChamp = async function () {
+  const response = await fetch(
+    "http://localhost:5000/roster/champs/imgs/latest",
+    {
+      credentials: "include",
+    }
+  );
+  const responseData = await response.json();
+  return responseData;
+};
+
+export { addChamp, getChamps, getLatestChamp };

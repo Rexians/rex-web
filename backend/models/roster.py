@@ -42,3 +42,8 @@ class Roster(User):
             return None
         champ_imgs = [champ['champ_img'] for champ in user_roster['roster']['champs']]
         return champ_imgs
+    
+    def get_latest_champ_img(self):
+        user_roster = self.users_collection.find_one({"user_id": self.user_id}, {"roster": 1, "_id": 0})
+        champ_img = user_roster['roster']['champs'][-1]['champ_img']
+        return champ_img

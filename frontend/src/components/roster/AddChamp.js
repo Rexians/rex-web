@@ -2,10 +2,10 @@ import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
 import Select from "react-select";
 import { champOptions, tierOptions, rankOptions } from "./Options";
-import { addChamp } from "../../api/Roster";
+import { addChamp, getLatestChamp } from "../../api/Roster";
 import "../../styles/Roster.css";
 
-const AddChamp = ({ setIsOpen }) => {
+const AddChamp = ({ setIsOpen, champImgs, setChampImgs }) => {
   // Added champ/tier/rank state
   const [champ, setChamp] = useState(null);
   const [tier, setTier] = useState(null);
@@ -50,15 +50,31 @@ const AddChamp = ({ setIsOpen }) => {
     setRank(obj);
   };
 
-  // TEMPORARAY SAVE - checks if all options are filled
-  const Save = () => {
+  // Add champ image of newly added champ
+  const addChampImage = async () => {
+    var champImg = await getLatestChamp();
+    champImg = champImg["champ_img"];
+    console.log(champImg);
+    var img = <img src={champImg} alt={champImg} key={champImg}></img>;
+    setChampImgs([...champImgs, img]);
+  };
+
+  // First add champ to roster, then get image
+  const addAndGet = () => {
+    addChamp(champ["value"], tier["value"], rank["value"]).then(() =>
+      addChampImage()
+    );
+  };
+
+  // Add champ to roster
+  const Add = () => {
+    // If any field is empty, alert user
     if (champ === null || rank === null || tier === null) {
       alert("Please fill in all the options");
     } else {
       setIsOpen(false);
     }
-    
-    addChamp(champ["value"], tier["value"], rank["value"]);
+    addAndGet();
   };
 
   return (
@@ -92,8 +108,8 @@ const AddChamp = ({ setIsOpen }) => {
           <Button variant="secondary" onClick={() => setIsOpen(false)}>
             Close
           </Button>
-          <Button variant="primary" onClick={Save}>
-            Save changes
+          <Button variant="primary" onClick={Add}>
+            Add Champ
           </Button>
         </Modal.Footer>
       </Modal.Dialog>

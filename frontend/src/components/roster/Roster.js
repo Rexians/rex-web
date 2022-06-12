@@ -17,20 +17,32 @@ const Roster = () => {
 
   const [champImgs, setChampImgs] = useState([]);
 
+  // State to only load the roster once
+  const [onLoad, setOnLoad] = useState(false);
+
   // Get champ images and map them into image element
   const setRosterPage = async () => {
+    setOnLoad(true);
     var response = await getChamps();
     if (response["champ_imgs"] != null) {
       var lstChampImages = response["champ_imgs"].map((champImg) => (
         <img src={champImg} alt={champImg} key={champImg}></img>
       ));
+      setChampsCount(lstChampImages.length);
       setChampImgs(lstChampImages);
     }
   };
 
+  // Re render when image is added
   useEffect(() => {
-    setRosterPage();
-  }, []);
+    // On initial load, get all champs from roster
+    // If champ is added, update champ counter by 1
+    if (!onLoad) {
+      setRosterPage();
+    } else {
+      setChampsCount(champsCount + 1);
+    }
+  }, [champImgs]);
 
   return (
     <div>
@@ -56,7 +68,13 @@ const Roster = () => {
           </Navbar.Brand>
           <hr className="hr-left"></hr>
           <hr className="hr-right"></hr>
-          {isOpen ? <AddChamp setIsOpen={setIsOpen} /> : null}
+          {isOpen ? (
+            <AddChamp
+              setIsOpen={setIsOpen}
+              champImgs={champImgs}
+              setChampImgs={setChampImgs}
+            />
+          ) : null}
           {champImgs}
         </div>
       ) : (

@@ -23,11 +23,15 @@ def add_champ():
     champ_id = convert(params['champ'])
     tier = int(params['tier'])
     rank = int(params['rank'])
-    stats = requests.get(f"http://127.0.0.1:8000/champs/?champ={champ_id}&tier={tier}&rank={rank}").json()
-    champ_name = stats['name']
-    champ_class = stats['class']
-    prestige = stats['prestige']
-    champ_img = stats['img_portrait']
+    try:
+        stats = requests.get(f"http://127.0.0.1:8000/champs/?champ={champ_id}&tier={tier}&rank={rank}").json()
+        champ_name = stats['name']
+        champ_class = stats['class']
+        prestige = stats['prestige']
+        champ_img = stats['img_portrait']
+    except:
+        print("API DOWN")
+        return ""
 
     champ = Champ(champ_id, champ_name, champ_class, tier, rank, prestige, champ_img).create_champ()
     
@@ -50,4 +54,17 @@ def get_all_champs_imgs():
     """
     champ_imgs = Roster(session["user_id"]).get_champs_imgs()
     response = jsonify({"champ_imgs":champ_imgs})
+    return response
+
+@roster.route("/roster/champs/imgs/latest")
+@cross_origin(supports_credentials=True)
+def get_latest_champ_img():
+    """
+    Get latest added champ
+
+    Returns:
+        response (Response): Image of latest champ
+    """
+    champ_img = Roster(session["user_id"]).get_latest_champ_img()
+    response = jsonify({"champ_img":champ_img})
     return response
