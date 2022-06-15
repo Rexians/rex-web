@@ -5,7 +5,18 @@ const addChamp = async function (champ, tier, rank) {
   );
 };
 
-const getChamps = async function () {
+const getChamp = async function (champId, tier) {
+  const response = await fetch(
+    `http://localhost:5000/roster/champ?champ-id=${champId}&tier=${tier}`,
+    {
+      credentials: "include",
+    }
+  );
+  const responseData = await response.json();
+  return responseData;
+};
+
+const getChampsDisplay = async function () {
   const response = await fetch("http://localhost:5000/roster/champs/imgs", {
     credentials: "include",
   });
@@ -13,7 +24,7 @@ const getChamps = async function () {
   return responseData;
 };
 
-const getLatestChamp = async function () {
+const getLatestChampDisplay = async function () {
   const response = await fetch(
     "http://localhost:5000/roster/champs/imgs/latest",
     {
@@ -24,4 +35,4 @@ const getLatestChamp = async function () {
   return responseData;
 };
 
-export { addChamp, getChamps, getLatestChamp };
+export { addChamp, getChamp, getChampsDisplay, getLatestChampDisplay };

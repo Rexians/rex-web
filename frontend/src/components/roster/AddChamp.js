@@ -1,9 +1,11 @@
 import { Modal, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Select from "react-select";
 import { champOptions, tierOptions, rankOptions } from "./Options";
-import { addChamp, getLatestChamp } from "../../api/Roster";
-import "../../styles/Roster.css";
+import { addChamp, getLatestChampDisplay } from "../../api/Roster";
+import "../../styles/roster/Roster.css";
+import "../../styles/roster/ChampImgs.css";
 
 const AddChamp = ({ setIsOpen, champImgs, setChampImgs }) => {
   // Added champ/tier/rank state
@@ -13,6 +15,8 @@ const AddChamp = ({ setIsOpen, champImgs, setChampImgs }) => {
 
   // Valid rank options (changed when tier changes)
   const [validRankOptions, setRankOptions] = useState([]);
+
+  var navigate = useNavigate();
 
   // Check tier and only show valid rank options
   const checkTier = (obj) => {
@@ -50,12 +54,36 @@ const AddChamp = ({ setIsOpen, champImgs, setChampImgs }) => {
     setRank(obj);
   };
 
+  // Called when image is clicked
+  // Get selected champ and naviage to its champ page
+  const selectChamp = (event) => {
+    var champInfo = JSON.parse(event.target.getAttribute("champid"));
+    navigate(`./${champInfo["champId"]}/${champInfo["tier"]}`);
+  };
+
   // Add champ image of newly added champ
   const addChampImage = async () => {
-    var champImg = await getLatestChamp();
-    champImg = champImg["champ_img"];
-    console.log(champImg);
-    var img = <img src={champImg} alt={champImg} key={champImg}></img>;
+    var response = await getLatestChampDisplay();
+    var champDisplay = response["display_info"];
+
+    // Identification for which champ is pressed
+    var champId = {
+      champId: champDisplay["champ_id"],
+      tier: champDisplay["tier"],
+    };
+
+    var img = (
+      <img
+        onClick={selectChamp}
+        className={`tier-${champDisplay["tier"]}`}
+        id={champDisplay["champ_class"]}
+        src={champDisplay["champ_img"]}
+        alt="Not able to load..."
+        key={`${champDisplay["champ_img"]}/${champDisplay["tier"]}`}
+        champid={JSON.stringify(champId)}
+      ></img>
+    );
+
     setChampImgs([...champImgs, img]);
   };
 

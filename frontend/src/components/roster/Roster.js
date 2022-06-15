@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faPlusSquare } from "@fortawesome/free-regular-svg-icons";
-import { getChamps } from "../../api/Roster";
+import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
+import { getChampsDisplay } from "../../api/Roster";
 import AddChamp from "./AddChamp";
 import Navigation from "../Navigation";
-import "../../styles/Roster.css";
+import "../../styles/roster/Roster.css";
+import "../../styles/roster/ChampImgs.css";
 
 const Roster = () => {
   // Add champ state
@@ -20,13 +22,34 @@ const Roster = () => {
   // State to only load the roster once
   const [onLoad, setOnLoad] = useState(false);
 
+  var navigate = useNavigate();
+
+  // Called when image is clicked
+  // Get selected champ and naviage to its champ page
+  const selectChamp = (event) => {
+    var champInfo = JSON.parse(event.target.getAttribute("champid"));
+    navigate(`./${champInfo["champId"]}/${champInfo["tier"]}`);
+  };
+
   // Get champ images and map them into image element
   const setRosterPage = async () => {
     setOnLoad(true);
-    var response = await getChamps();
-    if (response["champ_imgs"] != null) {
-      var lstChampImages = response["champ_imgs"].map((champImg) => (
-        <img src={champImg} alt={champImg} key={champImg}></img>
+    var response = await getChampsDisplay();
+
+    if (response["display_info"] != null) {
+      var lstChampImages = response["display_info"].map((champDisplay) => (
+        <img
+          onClick={selectChamp}
+          className={`tier-${champDisplay["tier"]}`}
+          id={champDisplay["champ_class"]}
+          src={champDisplay["champ_img"]}
+          alt="Not able to load..."
+          key={`${champDisplay["champ_img"]}/${champDisplay["tier"]}`}
+          champid={JSON.stringify({
+            champId: champDisplay["champ_id"],
+            tier: champDisplay["tier"],
+          })}
+        ></img>
       ));
       setChampsCount(lstChampImages.length);
       setChampImgs(lstChampImages);
@@ -37,11 +60,12 @@ const Roster = () => {
   useEffect(() => {
     // On initial load, get all champs from roster
     // If champ is added, update champ counter by 1
-    if (!onLoad) {
-      setRosterPage();
-    } else {
-      if(champsCount !== champImgs.length)
-        setChampsCount(champsCount + 1);
+    if (window.localStorage.getItem("logged") === "true") {
+      if (!onLoad) {
+        setRosterPage();
+      } else {
+        if (champsCount !== champImgs.length) setChampsCount(champsCount + 1);
+      }
     }
   }, [champImgs]);
 
@@ -57,11 +81,6 @@ const Roster = () => {
               className="add-icon"
               onClick={() => setIsOpen(true)}
               icon={faPlusSquare}
-            ></FontAwesomeIcon>
-            <FontAwesomeIcon
-              title="Delete"
-              className="delete-icon"
-              icon={faTrashCan}
             ></FontAwesomeIcon>
           </Container>
           <Navbar.Brand id="roster-title" className="roster-title">
