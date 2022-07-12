@@ -1,0 +1,149 @@
+/* ----- ALLIANCE WAR INFO/STATS ----- */
+
+.aw-info {
+  width: 19%;
+  height: 55%;
+  border-radius: 25px;
+  margin-top: 2%;
+  border: 1.4px solid #146c6c;
+  position: absolute;
+  overflow-x: hidden;
+  left: 0.8%;
+}
+
+.aw-header {
+  text-align: center;
+  font-size: 150%;
+  margin-top: 2%;
+  font-family: "boson03";
+  color: white;
+}
+
+.aw-divider {
+  border-top: 1.4px solid #c0bdc0;
+  background-color: #c0bdc0;
+  width: 85%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.aw-stats {
+  color: white;
+  font-size: 110%;
+  margin-left: 4%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  font-family: "boson03";
+  display: flex;
+}
+
+.tier {
+  width: 100%;
+  text-align: right;
+  padding-right: 3%;
+  font-family: "boson03";
+  font-size: 90%;
+}
+
+.difficulty {
+  width: 100%;
+  text-align: right;
+  padding-right: 3%;
+  padding-top: 1%;
+  font-family: "boson03";
+  font-size: 80%;
+}
+
+.tiermult {
+  width: 48.8%;
+  text-align: right;
+  padding-right: 3%;
+  padding-top: 1%;
+  font-family: "boson03";
+  font-size: 80%;
+}
+
+.tierrank {
+  width: 65%;
+  text-align: right;
+  padding-right: 3%;
+  padding-top: 1%;
+  font-family: "boson03";
+  font-size: 80%;
+}
+
+.tier-button {
+  font-size: 110%;
+  border: 0.8px solid #146c6c;
+  background-color: #1a1a1a;
+  position: absolute;
+  overflow: hidden;
+  transform: translate(50%, -20%);
+  width: 50%;
+  height: 11%;
+  font-family: "boson03";
+  color: #c0bdc0;
+}
+
+.tier-button,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+/* ----- TIER SELECTION FORM ----- */
+
+.tier-selection {
+  width: 19%;
+  height: 60%;
+  border-radius: 25px;
+  margin-top: 2%;
+  border: 1.4px solid #69302c;
+  background-color: #1a1a1a;
+  position: absolute;
+  overflow-y: hidden;
+  left: 0.7%;
+}
+
+.selection-header {
+  text-align: center;
+  font-size: 150%;
+  margin-top: 2%;
+  font-family: "boson03";
+  color: #c0bdc0;
+}
+
+.selection-divider {
+  border-top: 1.4px solid #c0bdc0;
+  background-color: #c0bdc0;
+  width: 85%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.buttons-container {
+  width: 100%;
+  height: 13%;
+  display: inline-block;
+}
+
+.tier-link {
+  width: 25%;
+  height: 100%;
+  font-size: 110%;
+  font-family: "boson03";
+  color: #c0bdc0;
+  background-color: #1a1a1a;
+  border-width: 0px;
+}
+
+.close {
+  width: 50%;
+  height: 100%;
+  font-size: 110%;
+  font-family: "boson03";
+  color: #c0bdc0;
+  background-color: #1a1a1a;
+  text-align: center;
+  border-width: 0px;
+}
