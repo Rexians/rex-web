@@ -9,6 +9,8 @@ import Navigation from "../Navigation";
 import "../../styles/roster/Roster.css";
 import "../../styles/roster/ChampImgs.css";
 
+
+
 const Roster = () => {
   // Add champ state
   const [isOpen, setIsOpen] = useState(false);
@@ -40,10 +42,10 @@ const Roster = () => {
       var lstChampImages = response["display_info"].map((champDisplay) => (
         <img
           onClick={selectChamp}
-          className={`tier-${champDisplay["tier"]}`}
+          className={`img tier-${champDisplay["tier"]}`}
           id={champDisplay["champ_class"]}
           src={champDisplay["champ_img"]}
-          alt="Not able to load..."
+          alt="Not able to load..." 
           key={`${champDisplay["champ_img"]}/${champDisplay["tier"]}`}
           champid={JSON.stringify({
             champId: champDisplay["champ_id"],

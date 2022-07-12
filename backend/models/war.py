@@ -4,8 +4,8 @@ import json
 class War:
 
     def __init__(self):
-        self.war_info = None
-        self.error = None
+        self.war_info: dict = None
+        self.error: str = None
 
     def get_war_info(self, tier):
         """

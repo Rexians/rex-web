@@ -4,9 +4,9 @@ class Roster(User):
     
     def __init__(self, discord_id):
         super().__init__(discord_id)
-        self.champs = []
-        self.total_prestige = 0
-        self.total_champs = 0
+        self.champs: list = []
+        self.total_prestige: int = 0
+        self.total_champs: int = 0
 
     def create_roster(self):
         """

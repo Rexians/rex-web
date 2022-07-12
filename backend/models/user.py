@@ -4,8 +4,8 @@ class User(Database):
 
     def __init__(self, discord_id):
         self.users_collection = Database.db['users']
-        self.user_id = discord_id
-        self.roster = {}
+        self.user_id: str = discord_id
+        self.roster: dict = {}
 
     def create_user(self):
         """

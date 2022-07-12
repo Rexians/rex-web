@@ -22,10 +22,10 @@ function App() {
           path="/auth"
           element={<Authentication setLogged={setLogged} />}
         />
-        <Route exact path="/roster" element={<Roster />} />
-        <Route exact path="/roster/:champid/:tier" element={<ChampPage />} />
-        <Route exact path="/war" element={<AllianceWar />} />
-        <Route exact path="/war/:tier" element={<AllianceWar />} />
+        <Route path="/roster" element={<Roster />} />
+        <Route path="/roster/:champid/:tier" element={<ChampPage />} />
+        <Route path="/war" element={<AllianceWar />} />
+        <Route path="/war/:tier" element={<AllianceWar />} />
       </Routes>
     </Router>
   );
