@@ -1,0 +1,13 @@
+/* ----- ALLIANCE WAR BOARD ----- */
+
+.warboard {
+  position: absolute;
+  margin-top: 76px;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas {
+  position: absolute;
+  display: block;
+}

@@ -1,0 +1,55 @@
+/* ----- LOGIN FORM ----- */
+
+.login-form {
+  background-color: #2c2f33;
+  height: 50%;
+  width: 25%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 25px;
+}
+
+.login-header {
+  background-color: #768add;
+  height: 25%;
+  width: 100%;
+  position: fixed;
+  border-radius: 20px;
+}
+
+.login-button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 4%;
+  color: initial;
+  background-color: #768add;
+  height: 16%;
+  width: 70%;
+  position: fixed;
+  border-radius: 5px;
+  border: 0px;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%);
+  color: #1a1a1a;
+  font-weight: 600;
+  font-family: "MavenPro";
+  font-size: 100%;
+}
+
+.login-button:hover {
+  color: #1a1a1a;
+}
+
+.login-footer {
+  color: #c0bdc0;
+  font-family: "MavenPro";
+  text-align: center;
+  margin-top: 85%;
+  font-size: 80%;
+}

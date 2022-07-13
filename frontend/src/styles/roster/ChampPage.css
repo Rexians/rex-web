@@ -1,0 +1,184 @@
+/* -----CHAMP PAGE----- */
+
+.champ-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #1a1a1a;
+  background-color: #1a1a1a;
+}
+
+.champ-name-container {
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 470px;
+  height: 240px;
+  overflow: hidden;
+  background-image: linear-gradient(#212223, #2d2d2e, #333436);
+  clip-path: polygon(2% 0, 98% 0, 94% 19%, 6% 19%);
+}
+
+.champ-name-border {
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 470px;
+  height: 240px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 96% 23%, 4% 23%);
+}
+
+.champ-name {
+  width: 470px;
+  height: 240px;
+  font-size: 23px;
+  padding-top: 7px;
+  text-align: center;
+  color: #9f6046;
+}
+
+.back-button {
+  position: absolute;
+  width: 470px;
+  height: 240px;
+  background-color: #302e2f;
+  clip-path: polygon(0 0, 27% 0%, 19% 23%, 0 23%);
+}
+
+.back-button-border {
+  position: absolute;
+  width: 470px;
+  height: 240px;
+  background-image: linear-gradient(#323638, #4e5156 20%);
+  clip-path: polygon(0 0, 29% 0%, 21% 23%, 0 23%);
+}
+
+.back-button-icon {
+  position: fixed;
+  padding: 10px;
+  width: 80px;
+  height: 35px;
+  color: #737373;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 90.6%;
+  margin-top: 4.4%;
+  overflow: hidden;
+}
+
+.champ-img {
+  overflow: hidden;
+  margin-top: 7%;
+  margin-left: 50%;
+  transform: translate(-50%);
+  border-radius: 5%;
+  border: 6px ridge #333333;
+  width: 300px;
+  position: fixed;
+  opacity: 0.9;
+}
+
+.stats-bar {
+  position: absolute;
+  float: left;
+  width: 20%;
+  height: 100%;
+  background-color: #302e2f;
+  border-right: 5px ridge #4e5156;
+  border-top: 5px ridge #4e5156;
+}
+
+.stats-inner-page {
+  width: 90%;
+  height: 92%;
+  margin-left: 50%;
+  margin-top: 10%;
+  transform: translate(-50%);
+  background-color: #1d1e22;
+}
+
+.champ-stats {
+  color: #88898b;
+  font-size: 110%;
+  margin-left: 4%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  font-family: "boson03";
+  display: flex;
+}
+
+.champ-stats-value {
+  color: white;
+  height: 50px;
+  width: 100%;
+  text-align: right;
+  padding-right: 3%;
+  font-family: "boson03";
+  font-size: 90%;
+}
+
+.champ-stars {
+  padding-left: 1%;
+  font-size: 140%;
+  margin-top: 6%;
+}
+
+#unawakened-stars {
+  color: #e69a34;
+}
+
+#awakened-stars {
+  color: #c4d5df;
+}
+
+#six-name {
+  color: #3aadb6;
+}
+
+#five-name {
+  color: #d82c35;
+}
+
+#four-name {
+  color: #c29b3e;
+}
+
+#three-name {
+  color: #a9b7c3;
+}
+
+#two-name {
+  color: #9f6046;
+}
+
+#one-name {
+  color: #424e40;
+}
+
+#six-border {
+  background-image: linear-gradient(#3aadb6, #308dca 50%);
+}
+
+#five-border {
+  background-image: linear-gradient(#b74c3e, #89090b 50%);
+}
+
+#four-border {
+  background-image: linear-gradient(#5e4b1d, #c29b3e 80%);
+}
+
+#three-border {
+  background-image: linear-gradient(#a9b7c3, #363945 50%);
+}
+
+#two-border {
+  background-image: linear-gradient(#9f6046, #573326 40%);
+}
+
+#one-border {
+  background-image: linear-gradient(#424e40, #233022 70%);
+}
