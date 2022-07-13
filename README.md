@@ -1,22 +1,10 @@
-### Install
+# Rex-Web
+**The website for Rexes!**
 
-```
-git clone https://github.com/Rexians/rex-web.git
-git checkout dev
-```
+This is website created for the Rexians Community. Join the discord server of the community from [here]().
 
-### Run
+## Hosting
 
-```
-cd backend
-flask run
-```
+Even though, This Website was made for Rexians Community, You can host it for yourself.
 
-```
-cd frontend
-npm install
-npm start
-```
-
-Runs the app in the development mode.\
-Open [http://localhost:3000/home](http://localhost:3000/home) to view it in your browser.
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FRexians%2Frex-web%2F&referralCode=IndoRex)
